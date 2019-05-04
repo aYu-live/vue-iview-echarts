@@ -5,12 +5,12 @@ import {getHomeData} from './response/homedata'
 const Random = Mock.Random
 
 Mock.mock(/\/getUserInfo/, 'post', getUserInfo)
-// Mock.mock(/\/login/, 'post', login)
-// Mock.mock(/\/authorization/, 'get', authorization)
+Mock.mock(/\/login/, 'post', login)
+Mock.mock(/\/authorization/, 'get', authorization)
 Mock.mock(/\/getTableData/, 'get', getTableData)
 Mock.mock(/\/getFileList/, 'get', getFileList)
 Mock.mock(/\/getFolderList/, 'get', getFolderList)
-Mock.mock(/\getHomeData/, 'get', getHomeData)
+Mock.mock(/\/getHomeData/, 'get', getHomeData)
 
 Mock.setup({
   timeout: 0

@@ -4,7 +4,7 @@
       <i-col span="8" class="pic-left" :style="styles">
         <icon-svg :icon="icon" :size="60" color="white" class="icon-svg-sty"></icon-svg>
       </i-col>
-      <i-col span="12" class="pic-right">
+      <i-col span="10" class="pic-right">
         <div class="number-top">
           <count-to ref="countTo" :end-val="endVal"></count-to>
         </div>
@@ -67,7 +67,7 @@ export default {
   }
   .pic-right {
     float: left;
-    width: 70%;
+    width: 60%;
     height: 100%;
     display: table;
     text-align: center;

@@ -1,17 +1,12 @@
 <template>
   <div class="info-card-wrapper">
     <row class="row-wrapper code-row-bg" :gutter="20"  type="flex" justify="space-between">
-        <i-col :xs="12" :md="8" :lg="4"  v-for="(item,index) in iconList"  :key="`infor-${index}`">
+        <i-col :xs="12" :md="10" :lg="8" :xl="4"  v-for="(item,index) in iconList"  :key="`infor-${index}`" style="margin-top:10px">
           <common-icon  shadow :color='item.color' :endVal='item.count' :icon='item.icon' :title="item.title">
            </common-icon>
         </i-col>
         
     </row>
-    <row class="chart-row-wrapper code-row-bg" :gutter="16">
-        <i-col :xs="12" :md="8" :lg="9"><common-icon></common-icon></i-col>
-        <i-col  :xs="12" :md="16" :lg="15"><common-icon></common-icon></i-col>
-    </row>
-   <button @click="getHomeData">11</button>
   </div>
 </template>
 
@@ -31,8 +26,7 @@ export default {
   methods:{
     getHomeData(){
       getHomeData().then(res=>{
-        this.iconList=res;
-        
+        this.iconList=res; 
         console.log(this.iconList);
       })
     }
@@ -56,8 +50,11 @@ export default {
     height: 100%;
     border-radius:20px;
   }
+}
   .row-wrapper{
-    
+    .ivu-col{
+      
+    }
     .col-wrapper{
       .ivu-card-body{
         height: 100%;
@@ -70,5 +67,5 @@ export default {
       padding: 0px;
     }
   }
-}
+
 </style>
