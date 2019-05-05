@@ -2,7 +2,8 @@
   <div class="layout-wrapper">
     <Layout class="layout-outer">
       <Sider
-        :width="200"
+        breakpoint='lg'
+        :width="230"
         collapsible
         hide-trigger
         reverse-arrow

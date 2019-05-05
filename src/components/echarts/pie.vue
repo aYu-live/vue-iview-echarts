@@ -1,5 +1,5 @@
 <template>
-<v-chart :options="polar" :auto-resize='true'/>
+<v-chart :options="polar" :auto-resize="true"></v-chart>
 </template>
 
 <style>
@@ -8,7 +8,7 @@
  * 把尺寸设为百分比值（同时请记得为容器设置尺寸）。
  */
 .echarts {
-  width: 100%;
+  height: 100%;
   height: 400px;
 }
 </style>

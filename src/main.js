@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import Bus from './lib/bus'
 import iview from 'iview'
-import ECharts from 'vue-echarts'
+// import ECharts from 'vue-echarts'
 import 'iview/dist/styles/iview.css'
 import '@/assets/font/iconfont.js'
 import '@/assets/font/iconfont.css'
@@ -16,7 +16,7 @@ Vue.config.productionTip = false
 Vue.prototype.$bus = Bus
 // Vue.component('icon-font', IconFont)
 Vue.component('icon-svg', IconSvg)
-Vue.component('v-chart', ECharts)
+// Vue.component('v-chart', ECharts)
 Vue.use(iview)
 
 const handleClick = event => {
