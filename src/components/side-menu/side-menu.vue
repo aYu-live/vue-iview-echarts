@@ -21,11 +21,11 @@
         </template>
         <template v-else>
           <menu-item v-if="item.children && item.children.length===1"  :key="`menu_${item.children[0].name}`" :name="item.children[0].name">
-            <Icon :type="item.children[0].icon"/>
+            <Icon :type="item.children[0].meta.icon"/>
             {{ item.children[0].meta.title}}
           </menu-item>
           <menu-item v-else :key="`menu_${item.name}`" :name="item.name">
-            <Icon :type="item.icon"/>
+            <Icon :type="item.meta.icon"/>
             {{ item.meta.title }}
           </menu-item>
         </template>
@@ -33,6 +33,7 @@
     </Menu>
     <div v-show="collapsed" class="drop-wrapper">
       <template v-for="item in list">
+        <template v-if="item.children && item.children.length > 1">
         <re-dropdown
           @on-select="handleSelect"
           v-if="item.children"
@@ -41,11 +42,14 @@
           :key="`drop_${item.name}`"
           :parent="item"
         ></re-dropdown>
-        <Tooltip v-else transfer :content="item.title" placement="right" :key="`drop_${item.name}`">
+        </template>
+        <template v-else>
+        <Tooltip  transfer :content="item.meta.title" placement="right" :key="`drop_${item.name}`">
           <span @click="handleClick(item.name)" class="drop-menu-span">
-            <Icon :type="item.icon" color="#fff" :size="20"></Icon>
+            <Icon :type="item.meta.icon" color="#fff" :size="20"></Icon>
           </span>
         </Tooltip>
+        </template>
       </template>
     </div>
   </div>

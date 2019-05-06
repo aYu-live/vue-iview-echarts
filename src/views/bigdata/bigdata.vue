@@ -162,7 +162,7 @@ export default {
     }
 	},
 	mounted () {
-		this.changeData(100000);
+		this.changeData(500000);
 		let headers = ['这是数字', '这是字符1列', '这是纬度', '这是数字', '这是经度', '这是字符2列', '这是时间'];
 		let columns = headers.map((title, col) => {
 			return {

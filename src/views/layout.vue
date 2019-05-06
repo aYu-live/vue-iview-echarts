@@ -109,6 +109,9 @@ export default {
 .layout-wrapper,
 .layout-outer {
   height: 100%;
+  .ivu-layout{
+    z-index: 999;
+  }
   .header-wrapper {
     background: #fff;
     box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
@@ -124,7 +127,6 @@ export default {
   }
   .sider-outer {
     height: 100%;
-    overflow: hidden;
     .ivu-layout-sider-children {
       margin-right: -20px;
       overflow-y: scroll;

@@ -73,6 +73,7 @@ export const authorization = () => {
         page: {
           home: true,
           home_index: true,
+          join:true,
           about: true,
           argu: true,
           count_to: true,
@@ -88,6 +89,8 @@ export const authorization = () => {
           parent: true,
           child: true,
           named_view: true,
+          bigdata:true,
+          data:true,
           store: true,
           main: true
         },

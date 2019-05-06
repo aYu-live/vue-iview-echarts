@@ -5,7 +5,7 @@ export const getHomeData = () => {
   const template1 = {
     'title': '新增用戶',
     'icon': 'icon_addperson',
-    'count': 803,
+    'count|500-800': 0,
     'color': '#2d8cf0'
   }
   const template2 = {
@@ -23,7 +23,7 @@ export const getHomeData = () => {
   const template4 = {
     'title': '新增页面',
     'icon': 'icon_addperson',
-    'count': 8,
+    'count|6-10': 0,
     'color': '#9A66E4'
   }
   const template5 = {

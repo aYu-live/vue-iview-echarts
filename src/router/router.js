@@ -5,7 +5,8 @@ export const routerMap = [
     // alias: '/home_page',
     name: 'home',
     meta: {
-      title: '首页'
+      title: '首页',
+      icon:'md-add'
     },
     component: Layout,
     children: [
@@ -13,9 +14,30 @@ export const routerMap = [
         path: '',
         name: 'home',
         meta: {
-          title: '响应式布局'
+          title: '响应式布局',
+          icon:'md-add'
         },
         component: () => import('@/views/FirstHome/FirstHome.vue')
+      }
+    ]
+  },
+  {
+    path:'/join',
+    name:'join',
+    meta:{
+      name:'加入我们',
+      icon:'md-add'
+    },
+    component:Layout,
+    children:[
+      {
+        path:'/about',
+        name:'about',
+        meta:{
+          title:'关于',
+          icon:'md-add'
+        },
+        component:()=>import('@/views/about/about.vue')
       }
     ]
   },
@@ -24,14 +46,16 @@ export const routerMap = [
     name: 'optimize',
     component: Layout,
     meta: {
-      title: 'optimize'
+      title: 'optimize',
+      icon:'md-add'
     },
     children: [
       {
         path: 'optimize',
         name: 'optimize',
         meta: {
-          title: 'optimize'
+          title: 'optimize',
+          icon:'md-add'
         },
         component: () => import('@/views/optimize.vue')
       },
@@ -46,14 +70,16 @@ export const routerMap = [
           food: 'banana'
         },
         meta: {
-          title: '关于'
+          title: '关于',
+          icon:'md-add'
         }
       },
       {
         path: '/count-to',
         name: 'count_to',
         meta: {
-          title: 'count_to'
+          title: 'count_to',
+          icon:'md-add'
         },
         component: () => import('@/views/count-to.vue')
       },
@@ -61,7 +87,8 @@ export const routerMap = [
         path: '/menu_page',
         name: 'menu_page',
         meta: {
-          title: 'menu_page'
+          title: 'menu_page',
+          icon:'md-add'
         },
         component: () => import('@/views/menu-page.vue')
       },
@@ -69,7 +96,8 @@ export const routerMap = [
         path: '/upload',
         name: 'upload',
         meta: {
-          title: 'upload'
+          title: 'upload',
+          icon:'md-add'
         },
         component: () => import('@/views/upload.vue')
       },
@@ -77,7 +105,8 @@ export const routerMap = [
         path: '/form',
         name: 'form',
         meta: {
-          title: 'form'
+          title: 'form',
+          icon:'md-add'
         },
         component: () => import('@/views/form.vue')
       }
@@ -88,14 +117,16 @@ export const routerMap = [
     name: 'component',
     component: Layout,
     meta: {
-      title: '表格'
+      title: '表格列表',
+      icon:'md-add'
     },
     children: [
       {
         path: 'table',
         name: 'table_page',
         meta: {
-          title: '表格'
+          title: '表格',
+          icon:'md-add'
         },
         component: () => import('@/views/table.vue')
       },
@@ -103,7 +134,8 @@ export const routerMap = [
         path: 'folder_tree',
         name: 'folder_tree',
         meta: {
-          title: '文件夹'
+          title: '文件夹',
+          icon:'md-add'
         },
         component: () => import('@/views/folder-tree/folder-tree.vue')
       },
@@ -111,7 +143,8 @@ export const routerMap = [
         path: 'params/:id',
         name: 'params',
         meta: {
-          title: '参数'
+          title: '参数',
+          icon:'md-add'
         },
         component: () => import('@/views/argu.vue')
       }
@@ -121,7 +154,8 @@ export const routerMap = [
     path: '/render_page',
     name: 'render_page',
     meta: {
-      title: 'render_page'
+      title: 'render_page',
+      icon:'md-add'
     },
     component: () => import('@/views/render-page.vue')
   },
@@ -129,7 +163,8 @@ export const routerMap = [
     path: '/split-pane',
     name: 'split_pane',
     meta: {
-      title: 'split_pane'
+      title: 'split_pane',
+      icon:'md-add'
     },
     component: () => import('@/views/split-pane.vue')
   },
@@ -137,7 +172,8 @@ export const routerMap = [
     path: '/parent',
     name: 'parent',
     meta: {
-      title: 'parent'
+      title: 'parent',
+      icon:'md-add'
     },
     component: () => import('@/views/parent.vue'),
     children: [
@@ -145,7 +181,8 @@ export const routerMap = [
         path: 'child',
         name: 'child',
         meta: {
-          title: 'child'
+          title: 'child',
+          icon:'md-add'
         },
         component: () => import('@/views/child.vue')
       }
@@ -155,7 +192,8 @@ export const routerMap = [
     path: '/named_view',
     name: 'named_view',
     meta: {
-      title: 'named_view'
+      title: 'named_view',
+      icon:'md-add'
     },
     components: {
       default: () => import('@/views/child.vue'),
@@ -167,7 +205,8 @@ export const routerMap = [
     path: '/main',
     name: 'main',
     meta: {
-      title: 'main'
+      title: 'main',
+      icon:'md-add'
     },
     redirect: to => '/'
   },
@@ -175,7 +214,8 @@ export const routerMap = [
     path: '/store',
     name: 'store',
     meta: {
-      title: 'sotre'
+      title: 'sotre',
+      icon:'md-add'
     },
     component: () => import('@/views/store.vue')
   },
@@ -191,7 +231,8 @@ export const routerMap = [
         path: 'bigdata',
         name: 'bigdata',
         meta: {
-          title: '大数据表格性能优化'
+          title: '大数据表格性能优化',
+          icon:'md-add'
         },
         component: bigdata
       }
@@ -212,7 +253,8 @@ export const routes = [
     path: '/icon_page',
     name: 'icon_page',
     meta: {
-      title: '图标'
+      title: '图标',
+      icon:'md-add'
     },
     component: () => import('@/views/icon_page.vue')
   },

@@ -5,19 +5,16 @@
       autoresize
     />
 
-    <section v-if="expand.bar">
+    <section v-if="expand.line">
       <figure>
         <chart
-          :options="bar"
+          :options="line"
           :init-options="initOptions"
-          ref="bar"
+          ref="line"
           theme="ovilia-green"
           autoresize
         />
-        <p v-if="seconds <= 0"><small>Loaded.</small></p>
-      <p v-else><small>Data coming in <b>{{ seconds }}</b> second{{ seconds > 1 ? 's' : '' }}...</small></p>
-      <p><button @click="refresh" :disabled="seconds > 0">Refresh</button></p>
-      </figure>
+        </figure>
       
     </section>
 
@@ -26,15 +23,15 @@
 
 <script>
 import qs from 'qs'
+
 import 'echarts/lib/component/tooltip'
-import 'echarts/lib/component/legend'
-import 'echarts/lib/component/title'
 import ECharts from '_c/common-echarts/echarts.vue'
-import 'echarts/lib/chart/bar'
 import 'echarts/lib/chart/line'
+// import 'echarts/lib/chart/bar'
 
 // import logo from './data/logo'
-import getBar from './data/bar'
+// import getBar from './data/bar'
+import line from './data/line'
 // import pie from './data/pie'
 // import polar from './data/polar'
 // import scatter from './data/scatter'
@@ -67,15 +64,17 @@ export default {
     return {
       options,
       // logo,
-      bar: getBar(),
+      // bar: getBar(),
       // pie,
+      line,
       // polar,
       // scatter,
       // map,
       // c1,
       // c2,
       expand: {
-        bar: true,
+        line:true,
+        // bar: true,
         // pie: true,
         // polar: true,
         // scatter: true,
@@ -114,24 +113,24 @@ export default {
     }
   },
   methods: {
-    refresh () {
-      // simulating async data from server
-      this.seconds = 1
-      let bar = this.$refs.bar
-      bar.showLoading({
-        text: 'Loading…',
-        color: '#4ea397',
-        maskColor: 'rgba(255, 255, 255, 0.4)'
-      })
-      let timer = setInterval(() => {
-        this.seconds--
-        if (this.seconds === 0) {
-          clearTimeout(timer)
-          bar.hideLoading()
-          this.bar = getBar()
-        }
-      }, 100)
-    },
+    // refresh () {
+    //   // simulating async data from server
+    //   this.seconds = 1
+    //   let bar = this.$refs.bar
+    //   bar.showLoading({
+    //     text: 'Loading…',
+    //     color: '#4ea397',
+    //     maskColor: 'rgba(255, 255, 255, 0.4)'
+    //   })
+    //   let timer = setInterval(() => {
+    //     this.seconds--
+    //     if (this.seconds === 0) {
+    //       clearTimeout(timer)
+    //       bar.hideLoading()
+    //       this.bar = getBar()
+    //     }
+    //   }, 100)
+    // },
     // increase (amount) {
     //   if (!this.asyncCount) {
     //     this.$store.commit('increment', { amount, index: this.metricIndex })
@@ -255,9 +254,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+
 button
   border 1px solid #4fc08d
-  padding 2px
+  border-radius 2em
   background-color #fff
   color #42b983
   cursor pointer
@@ -311,7 +311,7 @@ figure
 
   .echarts
     width 100%
-    min-width 400px
+    min-height 500px
     height 300px
 
 @media (min-width 980px)
@@ -367,7 +367,6 @@ figure
         color #fff
 
   figure
-    width 90vw
     margin 1em auto
     padding 0 1em
     border none
