@@ -12,7 +12,7 @@
           <i-col>
             <Card class="info-card">
               <icon-svg icon="qq" :size="20" color="white" class="icon-svg-sty"></icon-svg>
-              QQ：875994852
+              QQ：1186619892
             </Card>
             <Card class="info-card">
               <icon-svg icon="weixin1" :size="20" color="white" class="icon-svg-sty"></icon-svg>
@@ -31,13 +31,18 @@
 </template>
 
 <script>
+import {getV1Real} from '@/mqtt/data'
 export default {
   name:'about',
   methods:{
-   
+   getData(){
+     getV1Real().then(res=>{
+       console.log(res);
+     })
+   }
   },
   mounted(){
-    
+    this.getData()
   }
 }
 </script>

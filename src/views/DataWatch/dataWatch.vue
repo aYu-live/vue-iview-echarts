@@ -49,7 +49,7 @@ export default {
           val.dataValue[val.dataValue.length-1]
         ]
       })
-      if(this.realData.length<2000){
+      if(this.realData.length<200){
         this.realData.push(dataobj)
       }else{
         this.realData.shift()
@@ -61,10 +61,12 @@ export default {
     } 
   },
   mounted(){
-    var a1=setInterval(()=>{
+    this.timer=setInterval(()=>{
       this.getInterval()
-      console.log(this.realData);
     },1000)
+  },
+  beforeDestroy(){
+    clearInterval(this.timer)
   }
 }
 </script>

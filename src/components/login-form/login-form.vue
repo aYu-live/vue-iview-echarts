@@ -20,8 +20,6 @@
   </Form>
 </template>
 <script>
-import { mapActions } from 'vuex'
-
 export default {
   name: 'LoginForm',
   props: {
@@ -45,7 +43,7 @@ export default {
   data () {
     return {
       form: {
-        userName: '小余同学',
+        userName: 'super_admin',
         password: ''
       }
     }
@@ -59,20 +57,14 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'login'
-    ]),
     handleSubmit () {
-      this.login({
-        userName: this.form.userName,
-        password: this.form.password
-      }).then(() => {
-        console.log('success!!')
-        this.$router.push({
-          name: 'home'
-        })
-      }).catch(error => {
-        console.log(error)
+      this.$refs.loginForm.validate((valid) => {
+        if (valid) {
+          this.$emit('on-success-valid', {
+            userName: this.form.userName,
+            password: this.form.password
+          })
+        }
       })
     }
   }

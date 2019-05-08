@@ -11,13 +11,14 @@ export const getUserInfo = ({ userId }) => {
 }
 
 export const login = ({ userName, password }) => {
+  const data = {
+    userName,
+    password
+  }
   return axios.request({
-    url: '/index/login',
-    method: 'post',
-    data: {
-      userName,
-      password
-    }
+    url: '/login',
+    data,
+    method: 'post'
   })
 }
 

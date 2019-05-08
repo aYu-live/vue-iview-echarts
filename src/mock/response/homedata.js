@@ -58,7 +58,7 @@ export const getRealData = () => {
     'id':'1',
     'name':'设备1',
     'time': Random.now(),
-    'value|1000-1500':0
+    'value|1700-1900.1-2':1000
   }
   doCustomTimes(1, () => {
     realarr.push(Mock.mock(template))

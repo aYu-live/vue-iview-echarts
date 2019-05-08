@@ -57,14 +57,14 @@ export default {
      */
     duration: {
       type: Number,
-      default: 1
+      default: 3
     },
     /**
      * @description 是否使用变速效果
      */
     useEasing: {
       type: Boolean,
-      default: false
+      default: true
     },
     /**
      * @description 是否使用变速效果
@@ -96,18 +96,10 @@ export default {
     getCount () {
       return this.$refs.number.innerText
     },
-    emitEndEvent () {
-      setTimeout(() => {
-        this.$nextTick(() => {
-          this.$emit('on-animation-end', Number(this.getCount()))
-        })
-      }, this.duration * 1000 + 5)
-    }
   },
   watch: {
     endVal (newVal, oldVal) {
       this.counter.update(newVal)
-      this.emitEndEvent()
     }
   },
   mounted () {
@@ -120,7 +112,6 @@ export default {
       })
       setTimeout(() => {
         this.counter.start()
-        this.emitEndEvent()
       }, this.delay)
     })
   }

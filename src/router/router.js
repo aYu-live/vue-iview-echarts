@@ -45,7 +45,8 @@ export const routerMap = [
     path: '/realData',
     name: 'realData',
     meta: {
-      title: '实时数据'
+      title: '实时数据',
+      icon:'md-add'
     },
     component: Layout,
     children: [

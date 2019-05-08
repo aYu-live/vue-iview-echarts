@@ -22,17 +22,17 @@ const actions = {
   updateUserName ({ commit, state, rootState, dispatch }) {
     // rootState.appName
   },
-  login ({ commit }, { userName, password }) {
+  handleLogin ({ commit }, { userName, password }) {
+    userName = userName.trim()
     return new Promise((resolve, reject) => {
-      login({ userName, password }).then(res => {
-        if (res.code === 200 && res.data.token) {
-          setToken(res.data.token)
-          resolve()
-        } else {
-          reject(new Error('错误'))
-        }
-      }).catch(error => {
-        reject(error)
+      login({
+        userName,
+        password
+      }).then(res => {
+        setToken(res.data.token)
+        resolve()
+      }).catch(err => {
+        reject(err)
       })
     })
   },

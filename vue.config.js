@@ -42,14 +42,10 @@ module.exports = {
   // 打包时不生成.map文件
   productionSourceMap: false,
   devServer: {
-    proxy: {
-      '/api':{
-        target: 'http://localhost:4004',
-        // secure: false,  // 如果是https接口，需要配置这个参数
-        changeOrigin:true,
-        pathRewrite:{
-          '^/api':''
-        }
+    proxy:  {
+      '/API': {
+        target: 'http://192.168.21.233',   //代理接口
+        changeOrigin: true,
       }
     }
   }
