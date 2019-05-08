@@ -33,6 +33,12 @@
 <script>
 export default {
   name:'about',
+  methods:{
+   
+  },
+  mounted(){
+    
+  }
 }
 </script>
 

@@ -1,6 +1,6 @@
 export default {
   title: {
-      text: '堆叠区域图'
+      text: '用户来源访问总量'
   },
   tooltip : {
       trigger: 'axis',

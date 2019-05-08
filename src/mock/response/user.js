@@ -92,7 +92,9 @@ export const authorization = () => {
           bigdata:true,
           data:true,
           store: true,
-          main: true
+          main: true,
+          realData:true,
+          dataWatch:true
         },
         component: {
           edit_button: true,

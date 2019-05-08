@@ -1,5 +1,6 @@
 import Mock from 'mockjs'
-import { doCustomTimes } from '@/lib/tools'
+const Random = Mock.Random
+import { doCustomTimes, doIntervalTime } from '@/lib/tools'
 
 export const getHomeData = () => {
   const template1 = {
@@ -49,4 +50,18 @@ export const getHomeData = () => {
     arr.push(Mock.mock(template5))
   })
   return arr
+}
+
+var realarr=[]
+export const getRealData = () => {
+  const template = {
+    'id':'1',
+    'name':'设备1',
+    'time': Random.now(),
+    'value|1000-1500':0
+  }
+  doCustomTimes(1, () => {
+    realarr.push(Mock.mock(template))
+  })
+  return realarr
 }

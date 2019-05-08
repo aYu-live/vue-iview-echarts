@@ -11,6 +11,9 @@ export default {
       type: String,
       default: 'apple'
     }
+  },
+  methods:{
+   
   }
 }
 </script>

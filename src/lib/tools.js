@@ -4,6 +4,18 @@ export const doCustomTimes = (times, callback) => {
     callback(i)
   }
 }
+/**
+ * @description 定时器，模拟实时推送
+ */
+export const doIntervalTime = (time,times,callback) => {
+    let i = -1
+  setInterval(() => {
+    while(++i<times){
+      callback(i)
+    }
+  },time)
+}
+
 
 export const objEqual = (obj1, obj2) => {
   const keysArr1 = Object.keys(obj1)

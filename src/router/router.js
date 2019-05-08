@@ -42,6 +42,25 @@ export const routerMap = [
     ]
   },
   {
+    path: '/realData',
+    name: 'realData',
+    meta: {
+      title: '实时数据'
+    },
+    component: Layout,
+    children: [
+      {
+        path: 'dataWatch',
+        name: 'dataWatch',
+        meta: {
+          title: '实时数据监控',
+          icon:'md-add'
+        },
+        component: ()=>import('@/views/DataWatch/dataWatch.vue')
+      }
+    ]
+  },
+  {
     path: '/optimize',
     name: 'optimize',
     component: Layout,

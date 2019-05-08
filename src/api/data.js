@@ -65,3 +65,10 @@ export const getHomeData = () => {
     method: 'get'
   })
 }
+
+export const getRealData = () => {
+  return axios.request({
+    url: '/getRealData',
+    method: 'get'
+  })
+}
