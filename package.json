@@ -24,7 +24,8 @@
     "vue-echarts": "^4.0.2",
     "vue-router": "^3.0.1",
     "vue-virtual-scroll-list": "^1.2.8",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "xlsx": "^0.14.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0",

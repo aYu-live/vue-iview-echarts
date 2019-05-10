@@ -4,7 +4,7 @@
       <div class="demo-avatar">
          <Dropdown style="margin-left: 20px" trigger='hover'>
         <a href="javascript:void(0)">
-          <Avatar src='http://gwjyhs.com/t6/702/1557317811x2890174070.jpg'>U</Avatar>
+          <Avatar src='http://gwjyhs.com/t6/702/1557395366x2890185996.jpg'>U</Avatar>
             <Icon type="ios-arrow-dropdown-circle" size='16' class="icon-style"></Icon>
         </a>
         <DropdownMenu slot="list">

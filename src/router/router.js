@@ -151,6 +151,24 @@ export const routerMap = [
         component: () => import('@/views/table.vue')
       },
       {
+        path: 'export_excel',
+        name: 'export_excel',
+        meta: {
+          title: '导出EXCEL',
+          icon:'md-add'
+        },
+        component: () => import('@/views/excel/export_excel.vue')
+      },
+      {
+        path: 'upload_excel',
+        name: 'upload_excel',
+        meta: {
+          title: '导入EXCEL',
+          icon:'md-add'
+        },
+        component: () => import('@/views/excel/upload_excel.vue')
+      },
+      {
         path: 'folder_tree',
         name: 'folder_tree',
         meta: {
