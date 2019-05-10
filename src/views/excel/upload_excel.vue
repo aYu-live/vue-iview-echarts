@@ -107,7 +107,12 @@ export default {
         this.$Message.info('文件读取成功')
         const data=e.target.result
         const {header, results} = excel.read(data,'array')
-        this.tableTitle
+        const tableTitle=header.map(item=>{return {title:item,key:item}})
+        this.tableTitle=tableTitle
+        this.tableData=results
+        this.tableLoading=false
+        this.disabled=false
+        this.showProgress=false
       }
     }
   },
