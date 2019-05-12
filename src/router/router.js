@@ -6,7 +6,7 @@ export const routerMap = [
     name: 'home',
     meta: {
       title: '首页',
-      icon:'md-add'
+      icon:'ios-home'
     },
     component: Layout,
     children: [
@@ -14,8 +14,8 @@ export const routerMap = [
         path: '',
         name: 'home',
         meta: {
-          title: '响应式布局',
-          icon:'md-add'
+          title: '首页',
+          icon:'ios-home'
         },
         component: () => import('@/views/FirstHome/FirstHome.vue')
       }
@@ -26,7 +26,7 @@ export const routerMap = [
     name:'join',
     meta:{
       name:'加入我们',
-      icon:'md-add'
+      icon:'md-contacts'
     },
     component:Layout,
     children:[
@@ -35,7 +35,7 @@ export const routerMap = [
         name:'about',
         meta:{
           title:'关于',
-          icon:'md-add'
+          icon:'md-contacts'
         },
         component:()=>import('@/views/about/about.vue')
       }
@@ -46,7 +46,7 @@ export const routerMap = [
     name: 'realData',
     meta: {
       title: '实时数据',
-      icon:'md-add'
+      icon:'md-trending-up'
     },
     component: Layout,
     children: [
@@ -55,7 +55,7 @@ export const routerMap = [
         name: 'dataWatch',
         meta: {
           title: '实时数据监控',
-          icon:'md-add'
+          icon:'md-trending-up'
         },
         component: ()=>import('@/views/DataWatch/dataWatch.vue')
       }
@@ -138,7 +138,7 @@ export const routerMap = [
     component: Layout,
     meta: {
       title: '表格列表',
-      icon:'md-add'
+      icon:'md-apps'
     },
     children: [
       {
@@ -146,7 +146,7 @@ export const routerMap = [
         name: 'table_page',
         meta: {
           title: '表格',
-          icon:'md-add'
+          icon:'ios-stats'
         },
         component: () => import('@/views/table.vue')
       },
@@ -155,7 +155,7 @@ export const routerMap = [
         name: 'export_excel',
         meta: {
           title: '导出EXCEL',
-          icon:'md-add'
+          icon:'md-cloud-download'
         },
         component: () => import('@/views/excel/export_excel.vue')
       },
@@ -164,7 +164,7 @@ export const routerMap = [
         name: 'upload_excel',
         meta: {
           title: '导入EXCEL',
-          icon:'md-add'
+          icon:'md-cloud-upload'
         },
         component: () => import('@/views/excel/upload_excel.vue')
       },
@@ -173,7 +173,7 @@ export const routerMap = [
         name: 'folder_tree',
         meta: {
           title: '文件夹',
-          icon:'md-add'
+          icon:'md-albums'
         },
         component: () => import('@/views/folder-tree/folder-tree.vue')
       },
@@ -182,7 +182,7 @@ export const routerMap = [
         name: 'params',
         meta: {
           title: '参数',
-          icon:'md-add'
+          icon:'md-flash'
         },
         component: () => import('@/views/argu.vue')
       }
@@ -261,7 +261,8 @@ export const routerMap = [
     path: '/data',
     name: 'data',
     meta: {
-      title: '数据优化'
+      title: '数据优化',
+      icon:'logo-buffer'
     },
     component: Layout,
     children: [
@@ -270,9 +271,29 @@ export const routerMap = [
         name: 'bigdata',
         meta: {
           title: '大数据表格性能优化',
-          icon:'md-add'
+          icon:'logo-buffer'
         },
         component: bigdata
+      }
+    ]
+  },
+  {
+    path: '/mqtt',
+    name: 'mqtt',
+    meta: {
+      title: 'WebSocket',
+      icon:'logo-buffer'
+    },
+    component: Layout,
+    children: [
+      {
+        path: 'websocket',
+        name: 'websocket',
+        meta: {
+          title: 'WebSocket',
+          icon:'logo-buffer'
+        },
+        component: ()=>import('@/views/WebSocket/WebSocket.vue')
       }
     ]
   }

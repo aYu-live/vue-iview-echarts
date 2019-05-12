@@ -8,23 +8,29 @@
           accept=".xls, .xlsx"
           :before-upload='handleBeforeUpload'
           :disabled='disabled'
+          :show-upload-list=false
         >
-          <div style="padding: 20px 0">
+          <div style="padding: 20px 0" @mousedown="a">
             <Icon type="ios-cloud-upload" size="52" :style="styles"></Icon>
             <p>可以把文件拖拽到此区域</p>
           </div>
         </Upload>
       </Row>
       <Row>
-        <div class="ivue-upload-list-file" v-if="file!==null">
-          <Icon type='iso-stats'></Icon>
+        <div class="ivu-upload-list-file" v-if="file !== null">
+          <Icon type='ios-stats'></Icon>
           {{file.name}}
-          <Icon v-show="showRemoveFile" type='iso-close' class="ivu-upload-list-remove" @click.native="handleRemove()"></Icon>
+          <Icon 
+            v-show="showRemoveFile" 
+            type='ios-close' 
+            class="ivu-upload-list-remove" 
+            @click.native="handleRemove()"
+          ></Icon>
         </div>
       </Row>
       <Row>
-        <transition name='fade'>
-          <Progress v-if="showProgress" :percent="progressPercent" :stroke-width='2' :success-percent='progressPercent'>
+        <transition name='slide-fade'>
+          <Progress v-if="showProgress" :percent="progressPercent" :stroke-width='2' >
             <div v-if="progressPercent == 100">
               <Icon type="ios-checkmark-circle"></Icon>
               <span>成功</span>
@@ -59,9 +65,13 @@ export default {
     }
   },
   methods:{
+    a(){
+      console.log(1);
+    },
     initUpload(){
       this.file=null,
       this.showRemoveFile=false,
+      this.showProgress=false,
       this.progressPercent=0,
       this.tableTitle=[],
       this.tableData=[],
@@ -113,6 +123,7 @@ export default {
         this.tableLoading=false
         this.disabled=false
         this.showProgress=false
+        this.showRemoveFile=true
       }
     }
   },
@@ -127,4 +138,5 @@ export default {
 
 <style lang="less">
 @import './common.less';
+
 </style>

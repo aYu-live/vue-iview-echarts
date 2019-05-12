@@ -21,12 +21,12 @@
         </template>
         <template v-else>
           <menu-item v-if="item.children && item.children.length===1"  :key="`menu_${item.children[0].name}`" :name="item.children[0].name">
-            <Icon :type="item.children[0].meta.icon"/>
-            {{ item.children[0].meta.title}}
+            <Icon :type="item.children[0].meta.icon" :size='20'/>
+            <span class="sider-font-size">{{ item.children[0].meta.title}}</span>
           </menu-item>
           <menu-item v-else :key="`menu_${item.name}`" :name="item.name">
-            <Icon :type="item.meta.icon"/>
-            {{ item.meta.title }}
+            <Icon :type="item.meta.icon" size='20'/>
+            <span class="sider-font-size">{{ item.meta.title }}</span>
           </menu-item>
         </template>
       </template>
@@ -46,7 +46,7 @@
         <template v-else>
         <Tooltip  transfer :content="item.meta.title" placement="right" :key="`drop_${item.name}`">
           <span @click="handleClick(item.name)" class="drop-menu-span">
-            <Icon :type="item.meta.icon" color="#fff" :size="20"></Icon>
+            <Icon :type="item.meta.icon" color="#fff" size="20"></Icon>
           </span>
         </Tooltip>
         </template>
@@ -107,6 +107,10 @@ export default {
 <style lang="less">
 .side-menu-wrapper {
   width: 100%;
+  
+    .ivu-icon{
+      vertical-align: top;
+    }
   .ivu-tooltip,
   .drop-menu-span {
     display: block;
@@ -119,5 +123,9 @@ export default {
     padding: 5px;
     margin: 0 auto;
   }
+}
+.sider-font-size{
+  font-size: 15px;
+  line-height: 20px;
 }
 </style>

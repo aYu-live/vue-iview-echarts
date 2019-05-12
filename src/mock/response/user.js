@@ -92,6 +92,8 @@ export const authorization = () => {
           bigdata:true,
           data:true,
           export_excel:true,
+          mqtt:true,
+          websocket:true,
           // store: true,
           // main: true,
           realData:true,
