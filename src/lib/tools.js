@@ -62,3 +62,28 @@ export const off=(function(){
     } 
   }
 })()
+
+/**
+ * @description 数组遍历删除
+ */
+export const deleteByArray=((item,arr)=>{
+  arr.splice(arr.findIndex(v => v.value==item),1);
+})
+
+/**
+ * @description 验证数组中是否存在值
+ */
+export const checkArrayhas=((item,arr)=>{
+  return arr.includes(item)
+})
+
+/**
+ * 
+ */
+export const Uint8ArrayToString=((oldarr)=>{
+  var dataString = ""
+  for (var i = 0; i < oldarr.length; i++) {
+    dataString += String.fromCharCode(oldarr[i]);
+  }
+  return dataString
+})

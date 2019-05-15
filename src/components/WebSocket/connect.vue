@@ -85,12 +85,25 @@ export default {
       }
     }
   },
+  computed:{
+    realClientConnected(){
+      console.log('computed!');
+      return this.$store.state.mqttData.client.connected
+    }
+  },
   watch:{
-    'client.connected':function(nval){
+    realClientConnected:function(nval){
       if(nval==true){
+        console.log('true');
         this.disabled=true
+        this.$Message.success('连接成功')
+        if(this.client.disconnected=true){
+          this.$Message.error('连接过程中出现错误')
+        }
       }else{
+        console.log('true');
         this.disabled=false
+        this.$Message.error('断开连接')
       }
     }
   },
@@ -108,7 +121,6 @@ export default {
       }
      this.client = mqtt.connect('mqtt:\/\/'+this.host+':'+this.port+'\/mqtt', this.options)
      if(this.client.connected=true){
-      this.$Message.success('连接成功')
       this.saveClient(this.client)
       console.log('連接了');
      }
@@ -116,9 +128,9 @@ export default {
     unconnect(){
       this.client.end()
       if(this.client.disconnected=true){
-        this.$Message.error('断开连接')
-        this.saveClient(this.client)
-        console.log('斷開了');
+          this.saveClient(this.client)
+          console.log('斷開了');
+          
         }
     }
   }
