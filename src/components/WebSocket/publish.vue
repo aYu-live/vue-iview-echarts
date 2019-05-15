@@ -10,9 +10,9 @@
             <Icon type="ios-arrow-down"></Icon>
         </i-button>
         <DropdownMenu slot="list">
-            <DropdownItem name='0'>0</DropdownItem>
-            <DropdownItem name='1'>1</DropdownItem>
-            <DropdownItem name='2'>2</DropdownItem>
+            <DropdownItem name='0'>0 - Almost Once</DropdownItem>
+            <DropdownItem name='1'>1 - Atleast Once</DropdownItem>
+            <DropdownItem name='2'>2 - Exactly Once</DropdownItem>
         </DropdownMenu>
     </Dropdown>
     <span class="margin-5">默认：{{pubQOS}}</span>
@@ -35,8 +35,14 @@ export default {
     return{
       pubTopic:'',
       payload:'',
-      Retained:''
+      Retained:'',
+      pubQOS:{qos:0}
     }
+  },
+  methods:{
+     getQos(name){
+      this.pubQOS=Object({qos:Number.parseInt(name)})
+    },
   }
 }
 </script>

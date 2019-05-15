@@ -1,6 +1,6 @@
 <template>
   <div>
-    <real-data :realData='JSON.parse(JSON.stringify(this.realData))'></real-data>
+    <real-data :realData='JSON.parse(JSON.stringify(this.realData))' ></real-data>
   </div>
 </template>
 
@@ -71,6 +71,5 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-
+<style lang="less">
 </style>

@@ -2,6 +2,8 @@
   <main>
     <section>
       <figure>
+      <i-button @click="toggleLine" class="margin-10">切换折线图</i-button>
+      <i-button @click="toggleBar">切换柱形图</i-button>
         <chart
           :options="option"
           :init-options="initOptions"
@@ -10,7 +12,6 @@
           autoresize
         />
         </figure>
-      
     </section>
 
   </main>
@@ -24,7 +25,9 @@ import 'echarts/lib/component/toolbox'
 import 'echarts/lib/component/dataZoom'
 import ECharts from '_c/common-echarts/echarts.vue'
 import 'echarts/lib/chart/line'
+import 'echarts/lib/chart/bar'
 import { setInterval } from 'timers';
+import { close } from 'fs';
 export default {
   components: {
     chart: ECharts
@@ -32,12 +35,10 @@ export default {
   data () {
     let options = qs.parse(location.search, { ignoreQueryPrefix: true })
     return {
-      expand: {
-        line:true,
-      },
       initOptions: {
         renderer: options.renderer
       },
+      line_bar_type:'line',
       seconds: -1,
       asyncCount: false,
       connected: true,
@@ -81,6 +82,9 @@ export default {
           splitLine: {
             show: false
           },
+          min:function(value) {
+            return value.min - 50;
+          }
         },
         yAxis: {
           type: 'value',
@@ -91,7 +95,17 @@ export default {
         },
         series: [{
           name: '模拟数据',
-          type: 'line',
+          itemStyle: {   
+            //通常情况下：
+            normal:{  
+　　　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+              color: function (params){
+                var colorList = ['rgb(164,205,238)','rgb(42,170,227)','rgb(25,46,94)','rgb(195,229,235)'];
+                return colorList[params.dataIndex>3?params.dataIndex%4:params.dataIndex];
+              }
+            }
+          },
+          type: this.line_bar_type,
           showSymbol: false,
           hoverAnimation: false,
           data: this.realData
@@ -105,19 +119,27 @@ export default {
       default:()=>[]
     }
   },
-  computed: {
-  },
   methods: {
-    
+    toggleLine(){
+      this.line_bar_type='line'
+     this.option.series[0].type=this.line_bar_type
+    },
+    toggleBar(){
+      this.line_bar_type='bar'
+     this.option.series[0].type=this.line_bar_type
+    }
   },
   watch: {
    realData:function(val){
      this.realData=val
      this.option.series[0].data=this.realData
-   },
+   }
   },
   mounted () {
     
+  },
+  created(){
+     this.option.series[0].type=this.line_bar_type
   }
 }
 </script>
@@ -273,4 +295,6 @@ figure
       left -1px
       border-top-left-radius 0
       border-bottom-left-radius 0
+.margin-10
+  margin 10px
 </style>

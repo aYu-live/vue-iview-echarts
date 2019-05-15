@@ -1,7 +1,7 @@
 
 const state = {
   client:{},
-  basicData:[],
+  basicData:'',
   client_id:''
 }
 
@@ -21,7 +21,6 @@ const mutations = {
   },
   saveBasicDataArr(state,basicData){
     state.basicData=basicData
-    console.log('basicData',state.basicData);
   }
 }
 

@@ -97,7 +97,7 @@ export default {
         console.log('true');
         this.disabled=true
         this.$Message.success('连接成功')
-        if(this.client.disconnected=true){
+        if(this.client.disconnected==true){
           this.$Message.error('连接过程中出现错误')
         }
       }else{
