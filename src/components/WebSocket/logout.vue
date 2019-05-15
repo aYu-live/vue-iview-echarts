@@ -1,10 +1,10 @@
 <template>
   <Card title="Log日志输出">
-    <Card class="log-content">
+    <div class="log-content">
       <div v-for="(item, index) in outPutLog" :key="`log_${index}`">
         {{item}}
       </div>
-    </Card>
+    </div>
     <i-button type="warning" class="margin-top-10" @click="clearData">Clear</i-button>
   </Card>
 </template>
