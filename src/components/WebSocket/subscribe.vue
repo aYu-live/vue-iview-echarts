@@ -56,12 +56,11 @@ export default {
   },
   watch:{
     realClientConnected:function(nval){
-      if(nval==true){
-        this.disabled=true
-      }else{
+      console.log('nval',nval);
+      if(nval===false){
         this.disabled=false
-        this.realClient.unsubscribe(topicArr)
-        this.topicArr=[]
+        this.realClient.unsubscribe(this.topicArr)
+        this.topicArr.splice(0,this.topicArr.length)
       }
     }
   },
