@@ -66,7 +66,7 @@ export default {
   data(){
     return{
       client:{},
-      host:'192.168.21.220',
+      host:'192.168.21.46',
       port:'8083',
       client_id:'client_' + Math.random().toString(16).substr(2, 8),
       disabled:false,
@@ -93,16 +93,16 @@ export default {
   },
   watch:{
     realClientConnected:function(nval){
-      if(nval==true){
+      if(nval===true){
         console.log('true');
         this.disabled=true
         this.$Message.success('连接成功')
         if(this.client.disconnected==true){
           this.$Message.error('连接过程中出现错误')
         }
-      }else{
-        console.log('true');
+      }else if(nval===false){
         this.disabled=false
+        this.client.end()
         this.$Message.error('断开连接')
       }
     }

@@ -83,7 +83,6 @@ export const checkArrayhas=((item,arr)=>{
 export const Uint8ArrayToString=((array)=>{
     var out, i, len, c;
     var char2, char3;
- 
     out = "";
     len = array.length;
     i = 0;
@@ -104,9 +103,7 @@ export const Uint8ArrayToString=((array)=>{
         // 1110 xxxx  10xx xxxx  10xx xxxx
         char2 = array[i++];
         char3 = array[i++];
-        out += String.fromCharCode(((c & 0x0F) << 12) |
-                       ((char2 & 0x3F) << 6) |
-                       ((char3 & 0x3F) << 0));
+        out += String.fromCharCode(((c & 0x0F) << 12) | ((char2 & 0x3F) << 6) | ((char3 & 0x3F) << 0));
         break;
     }
     }
@@ -116,4 +113,9 @@ export const Uint8ArrayToString=((array)=>{
 /**
  * @description 日期格式
  */
-export const formatDate=((time)=>time.getHours()+':'+time.getMinutes()+':'+time.getSeconds())
+export const formatDate=((time)=>{
+    const hours=time.getHours()<10?'0'+time.getHours():time.getHours()
+    const minutes=time.getMinutes()<10?'0'+time.getMinutes():time.getMinutes()
+    const seconds=time.getSeconds()<10?'0'+time.getSeconds():time.getSeconds()
+    return hours+':'+minutes+':'+seconds
+  })

@@ -1,6 +1,7 @@
 <template>
   <Card title="订阅主题">
-    <p><span class="bold">Topic：</span><i-input class="input-content" v-model="subTopic" placeholder='订阅主题Topic'></i-input></p>
+    <p><span class="bold">Topic：</span>
+    <i-input class="input-content" v-model="subTopic" placeholder='订阅主题Topic'></i-input></p>
     <p class=" margin-top-10 ">
       <Dropdown trigger="click" placement='bottom-start' @on-click="getQos">
         <i-button type='default'>
@@ -19,15 +20,14 @@
     </i-button>
     </p>
     <Card title="订阅列表" class="margin-top-10">
-        
-        <Row :gutter="16">
-          <transition-group name="fade">
+      <Row :gutter="16">
+        <transition-group name="fade">
           <i-col v-show="ok" v-for="(item, index) in topicArr" :key="`sub_top_${index}`" class="sub-topic-col">
-             {{item}}
-             <Icon type="md-backspace" size='18' @click="closeSubTopic(item)" style="cursor : pointer"/>
+              {{item}}
+              <Icon type="md-backspace" size='18' @click="closeSubTopic(item)" style="cursor : pointer"/>
           </i-col>
-      </transition-group>
-         </Row>
+       </transition-group>
+        </Row>
     </Card>
   </Card>
 </template>
@@ -39,7 +39,7 @@ export default {
   name:'subscribe',
   data(){
     return{
-      subTopic:'lm/gw/ctrlResponse/gw1',
+      subTopic:'/World',
       disabled:'',
       topicArr:[],
       QOS:{qos:0},
@@ -62,6 +62,11 @@ export default {
         this.realClient.unsubscribe(this.topicArr)
         this.topicArr.splice(0,this.topicArr.length)
       }
+    },
+    topicArr:function(nval){
+      if(nval.length===0){
+        console.log(1,nval);
+      }
     }
   },
   mounted(){
@@ -81,24 +86,28 @@ export default {
       this.QOS=Object({qos:Number.parseInt(name)})
     },
     subscribe(){
-      if(checkArrayhas(this.subTopic,this.topicArr)){
-        this.$Message.warning('已订阅过该主题，不可重复订阅')
+      if(this.subTopic.trim()===''){
+        this.$Message.warning('订阅主题不可为空')
       }else{
-        if(this.realClientConnected==true){
-          const client=this.realClient
-          this.topicArr.push(this.subTopic)
-          client.subscribe(this.subTopic,this.QOS)
-          this.$Message.success('订阅'+this.subTopic+'主题成功')
-          client.on("message", (topic, payload)=> {
-            const outputArr = (Uint8ArrayToString(payload))
-            if(outputArr.includes('client')){
-              this.saveBasicData(outputArr)
-            }else{
-              this.saveBasicData(formatDate(new Date())+ outputArr)
-            }
-          })
+        if(checkArrayhas(this.subTopic,this.topicArr)){
+          this.$Message.warning('已订阅过该主题，不可重复订阅')
         }else{
-          this.$Message.error('连接失败')
+          if(this.realClientConnected==true){
+            const client=this.realClient
+            this.topicArr.push(this.subTopic)
+            client.subscribe(this.subTopic,this.QOS)
+            this.$Message.success('订阅'+this.subTopic+'主题成功')
+            client.on("message", (topic, payload)=> {
+              const outputArr = (Uint8ArrayToString(payload))
+              if(outputArr.includes('client')){
+                this.saveBasicData(outputArr)
+              }else{
+                this.saveBasicData(formatDate(new Date())+ outputArr)
+              }
+            })
+          }else{
+            this.$Message.error('连接失败')
+          }
         }
       }
     },
@@ -116,7 +125,7 @@ export default {
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 </style>
