@@ -41,14 +41,18 @@ export default {
   },
   data(){
     return{
-      client:{}
+      client:{},
+      connected:''
     }
   },
-  watch:{
-    
+  mounted(){
+    this.connected=this.getConnectState()
+    console.log(this.connected);
   },
   methods:{
-    
+    getConnectState(){
+      return this.$store.state.mqttData.client.connected
+    }
   }
 }
 </script>

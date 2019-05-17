@@ -98,7 +98,8 @@ export const authorization = () => {
           // main: true,
           realData:true,
           dataWatch:true,
-          upload_excel:true
+          upload_excel:true,
+          allDataTable:true
         },
         component: {
           edit_button: true,

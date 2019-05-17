@@ -20,7 +20,6 @@ export default {
   },
   computed:{
     basicData(){
-      console.log('basicData!');
       return this.$store.state.mqttData.basicData
     }
   },

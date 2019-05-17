@@ -94,7 +94,6 @@ export default {
   watch:{
     realClientConnected:function(nval){
       if(nval===true){
-        console.log('true');
         this.disabled=true
         this.$Message.success('连接成功')
         if(this.client.disconnected==true){
@@ -112,13 +111,6 @@ export default {
       'saveClient'
     ]),
     connect(){
-      const options = {
-      connectTimeout: 4000, // 超时时间
-      // 认证信息
-      clientId: 'emqx-connect-via-websocket',
-      username: 'admin',
-      password: 'public',
-      }
      this.client = mqtt.connect('mqtt:\/\/'+this.host+':'+this.port+'\/mqtt', this.options)
      if(this.client.connected=true){
       this.saveClient(this.client)

@@ -23,7 +23,7 @@
       <Row :gutter="16">
         <transition-group name="fade">
           <i-col v-show="ok" v-for="(item, index) in topicArr" :key="`sub_top_${index}`" class="sub-topic-col">
-              {{item}}
+              {{item.subTopic}}
               <Icon type="md-backspace" size='18' @click="closeSubTopic(item)" style="cursor : pointer"/>
           </i-col>
        </transition-group>
@@ -56,21 +56,17 @@ export default {
   },
   watch:{
     realClientConnected:function(nval){
-      console.log('nval',nval);
       if(nval===false){
         this.disabled=false
+        console.log('订阅主题清空');
         this.realClient.unsubscribe(this.topicArr)
-        this.topicArr.splice(0,this.topicArr.length)
-      }
-    },
-    topicArr:function(nval){
-      if(nval.length===0){
-        console.log(1,nval);
+        window.localStorage.setItem('topicArr','')
+        this.topicArr=this.getLocal()
       }
     }
   },
   mounted(){
-    
+    this.topicArr = this.getLocal()
   },
   methods:{
     ...mapGetters([
@@ -82,21 +78,26 @@ export default {
     ...mapGetters([
       'showBasicData'
     ]),
+    getLocal(){
+      return JSON.parse(localStorage.getItem('topicArr')!=='')&&localStorage.getItem('topicArr')?JSON.parse(localStorage.getItem('topicArr')):[]
+    },
     getQos(name){
       this.QOS=Object({qos:Number.parseInt(name)})
     },
     subscribe(){
       if(this.subTopic.trim()===''){
-        this.$Message.warning('订阅主题不可为空')
+        this.$Message.warning('订阅主题不可为空!')
       }else{
         if(checkArrayhas(this.subTopic,this.topicArr)){
-          this.$Message.warning('已订阅过该主题，不可重复订阅')
+          this.$Message.warning('已订阅过该主题，不可重复订阅!')
         }else{
           if(this.realClientConnected==true){
             const client=this.realClient
-            this.topicArr.push(this.subTopic)
+            const obj=new Object({'subTopic':this.subTopic})
+            this.topicArr.push(obj)
+            localStorage.setItem('topicArr',JSON.stringify(this.topicArr))
             client.subscribe(this.subTopic,this.QOS)
-            this.$Message.success('订阅'+this.subTopic+'主题成功')
+            this.$Message.success(`订阅'${this.subTopic}'主题成功!`)
             client.on("message", (topic, payload)=> {
               const outputArr = (Uint8ArrayToString(payload))
               if(outputArr.includes('client')){

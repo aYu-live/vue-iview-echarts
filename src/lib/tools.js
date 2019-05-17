@@ -74,7 +74,18 @@ export const deleteByArray=((item,arr)=>{
  * @description 验证数组中是否存在值
  */
 export const checkArrayhas=((item,arr)=>{
-  return arr.includes(item)
+  if(arr==null&&!arr){
+    return false
+  }else{
+    for(let index of arr){
+      if(index.subTopic===item){
+        return true
+      }else{
+        return false
+      }
+    }
+  }
+  
 })
 
 /**

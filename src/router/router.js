@@ -1,5 +1,6 @@
 import Layout from '@/views/layout.vue'
 import bigdata from '@/views/bigdata/bigdata.vue'
+import WebSocket from '@/views/WebSocket/WebSocket.vue'
 export const routerMap = [
   {path: '/',
     // alias: '/home_page',
@@ -293,7 +294,16 @@ export const routerMap = [
           title: 'WebSocket',
           icon:'logo-buffer'
         },
-        component: ()=>import('@/views/WebSocket/WebSocket.vue')
+        component: WebSocket
+      },
+      {
+        path: 'allDataTable',
+        name: 'allDataTable',
+        meta: {
+          title: '设备信息表格',
+          icon:'logo-buffer'
+        },
+        component: ()=>import('@/views/mqttTable/allDataTable.vue')
       }
     ]
   }
