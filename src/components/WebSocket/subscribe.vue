@@ -39,7 +39,7 @@ export default {
   name:'subscribe',
   data(){
     return{
-      subTopic:'/World',
+      subTopic:'lm/gw/status/gw1',
       disabled:'',
       topicArr:[],
       QOS:{qos:0},
@@ -56,7 +56,7 @@ export default {
   },
   watch:{
     realClientConnected:function(nval){
-      if(nval===false){
+      if(nval===false&&!nval){
         this.disabled=false
         console.log('订阅主题清空');
         this.realClient.unsubscribe(this.topicArr)
@@ -79,7 +79,11 @@ export default {
       'showBasicData'
     ]),
     getLocal(){
-      return JSON.parse(localStorage.getItem('topicArr')!=='')&&localStorage.getItem('topicArr')?JSON.parse(localStorage.getItem('topicArr')):[]
+      if(this.$store.state.mqttData.client.connected){
+        return JSON.parse(localStorage.getItem('topicArr')!=='')&&localStorage.getItem('topicArr')?JSON.parse(localStorage.getItem('topicArr')):[]
+      }else{
+        return []
+      }
     },
     getQos(name){
       this.QOS=Object({qos:Number.parseInt(name)})
@@ -114,8 +118,9 @@ export default {
     },
     closeSubTopic(topic){
       const client=this.realClient
-      client.unsubscribe(topic)
-      deleteByArray(topic,this.topicArr)
+      console.log(topic.subTopic);
+      client.unsubscribe(topic.subTopic)
+      deleteByArray(topic.subTopic,this.topicArr)
       this.$Message.error('取消订阅成功')
     }
   }

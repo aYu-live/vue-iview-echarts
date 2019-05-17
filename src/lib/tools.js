@@ -67,7 +67,11 @@ export const off=(function(){
  * @description 数组遍历删除
  */
 export const deleteByArray=((item,arr)=>{
-  arr.splice(arr.findIndex(v => v==item),1);
+  console.log('delect',item,arr);
+  arr.splice(arr.findIndex(v =>{
+    console.log(1,v,item,1);
+    return v.subTopic==item
+  }),1);
 })
 
 /**
@@ -77,13 +81,12 @@ export const checkArrayhas=((item,arr)=>{
   if(arr==null&&!arr){
     return false
   }else{
-    for(let index of arr){
-      if(index.subTopic===item){
+    for(let i of arr){
+      if(i.subTopic===item){
         return true
-      }else{
-        return false
       }
     }
+    return false
   }
   
 })

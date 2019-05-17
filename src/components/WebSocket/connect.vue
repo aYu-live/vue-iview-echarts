@@ -30,8 +30,8 @@
             </div>
             <div class="connect-button-content">
               <ButtonGroup class="margin-top-10">
-                <i-button type="success" :disabled='disabled' class="margin-5" @click="connect">连接</i-button>
-                <i-button type="error" :disabled='!disabled' class="margin-5" @click="unconnect">断开连接</i-button>
+                <i-button type="success" :disabled='connected' class="margin-5" @click="connect">连接</i-button>
+                <i-button type="error" :disabled='!connected' class="margin-5" @click="unconnect">断开连接</i-button>
                   
               </ButtonGroup>
             </div>
@@ -65,11 +65,10 @@ export default {
   name:'connect',
   data(){
     return{
-      client:{},
+      client:this.$store.state.mqttData.client.connected?this.$store.state.mqttData.client:{},
       host:'192.168.21.46',
       port:'8083',
       client_id:'client_' + Math.random().toString(16).substr(2, 8),
-      disabled:false,
       userName:'',
       password:'',
       cleanSession:true,
@@ -85,22 +84,27 @@ export default {
       }
     }
   },
+  props:{
+    connected:{
+      type:Boolean
+    }
+  },
   computed:{
     realClientConnected(){
       console.log('computed!');
       return this.$store.state.mqttData.client.connected
     }
   },
+  mounted(){
+  },
   watch:{
     realClientConnected:function(nval){
       if(nval===true){
-        this.disabled=true
         this.$Message.success('连接成功')
         if(this.client.disconnected==true){
           this.$Message.error('连接过程中出现错误')
         }
       }else if(nval===false){
-        this.disabled=false
         this.client.end()
         this.$Message.error('断开连接')
       }

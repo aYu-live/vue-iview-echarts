@@ -2,7 +2,7 @@
   <div class="websocket-wrapper">
     <Row class="connect-wrapper margin-top-20">
       <i-col>
-        <connect></connect>
+        <connect :connected='connected'></connect>
       </i-col>
     </Row>
     <Row class="sub_pub-wrapper margin-top-20" type="flex" justify="space-between" :gutter='24'>
@@ -42,17 +42,25 @@ export default {
   data(){
     return{
       client:{},
-      connected:''
+      connected:null
     }
   },
-  mounted(){
-    this.connected=this.getConnectState()
-    console.log(this.connected);
-  },
-  methods:{
+  computed:{
     getConnectState(){
       return this.$store.state.mqttData.client.connected
     }
+  },
+  watch:{
+    getConnectState:function(nval){
+      console.log('watch',nval);
+      this.connected=nval
+    }
+  },
+  mounted(){
+    this.connected=this.$store.state.mqttData.client.connected&&this.$store.state.mqttData.client.connected===true?true:false
+  },
+  methods:{
+    
   }
 }
 </script>
