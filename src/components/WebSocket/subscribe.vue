@@ -101,6 +101,7 @@ export default {
             this.topicArr.push(obj)
             localStorage.setItem('topicArr',JSON.stringify(this.topicArr))
             client.subscribe(this.subTopic,this.QOS)
+            console.log('订阅成功',Object.values(client.messageIdToTopic));
             this.$Message.success(`订阅'${this.subTopic}'主题成功!`)
             client.on("message", (topic, payload)=> {
               const outputArr = (Uint8ArrayToString(payload))
@@ -118,9 +119,10 @@ export default {
     },
     closeSubTopic(topic){
       const client=this.realClient
-      console.log(topic.subTopic);
+      console.log(topic.subTopic,this.topicArr);
       client.unsubscribe(topic.subTopic)
-      deleteByArray(topic.subTopic,this.topicArr)
+      this.topicArr=deleteByArray(topic.subTopic,this.topicArr)
+      window.localStorage.setItem('topicArr',JSON.stringify(this.topicArr))
       this.$Message.error('取消订阅成功')
     }
   }

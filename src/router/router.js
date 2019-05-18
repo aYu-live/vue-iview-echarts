@@ -26,7 +26,7 @@ export const routerMap = [
     path:'/join',
     name:'join',
     meta:{
-      name:'加入我们',
+      title:'加入我们',
       icon:'md-contacts'
     },
     component:Layout,

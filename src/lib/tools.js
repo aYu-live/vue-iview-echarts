@@ -68,10 +68,9 @@ export const off=(function(){
  */
 export const deleteByArray=((item,arr)=>{
   console.log('delect',item,arr);
-  arr.splice(arr.findIndex(v =>{
-    console.log(1,v,item,1);
-    return v.subTopic==item
-  }),1);
+  console.log(arr.findIndex(v =>v.subTopic==item),2 );
+  arr.splice(arr.findIndex(v =>v.subTopic==item),1);
+  return arr
 })
 
 /**

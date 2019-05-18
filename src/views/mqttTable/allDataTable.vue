@@ -9,11 +9,11 @@
        {{item}}------{{index}}
      </div> -->
      <Card class="table1-card-wrapper" title="AHU数据显示">
-      <Table :columns="AHUcolums" :data='AHUArray' :stripe='false' :border='true' :loading='AHUArray&&AHUArray!==[]?false:true' :highlight-row='true' size='large'>
+      <Table :columns="AHUcolums" :data='AHUArray' :stripe='false' :border='true' :loading='Object.keys(allValue).length==0' :highlight-row='true' size='large'>
       </Table>
      </Card>
      <Card class="table2-card-wrapper" title="VAV数据显示">
-      <Table :columns="VAVcolums" :data='VAVArray' :stripe='false' :border='true' :loading='VAVArray&&VAVArray!==[]?false:true' :highlight-row='true' size='large'>
+      <Table :columns="VAVcolums" :data='VAVArray' :stripe='false' :border='true' :loading='Object.keys(allValue).length==0' :highlight-row='true' size='large'>
       </Table>
      </Card>
      <BackTop :height="100" :bottom="200">
@@ -36,6 +36,7 @@ export default {
       checkConnected:this.$store.state.mqttData.client.connected&&(this.$store.state.mqttData.client.connected===true),
       VAVArray:[],
       AHUArray:[],
+      allValue:{},
       AHUcolums,
       VAVcolums
     }
@@ -48,27 +49,22 @@ export default {
   watch:{
     gainStateBasicData:function(nval){
       if(nval.includes('clientid')){
-        const allValue=JSON.parse(nval)
-        const VAVObject=allValue.VAV
-        const AHUObject=allValue.AHU
+        this.allValue=JSON.parse(nval)
+        const VAVObject=this.allValue.VAV
+        const AHUObject=this.allValue.AHU
         const AHUstrArray =filterAHUArrSame(AHUObject) 
         const VAVstrArray =filterVAVArrSame(VAVObject) 
         this.AHUArray=returnAHUArray(AHUstrArray,AHUObject)
         this.VAVArray=returnVAVArray(VAVstrArray,VAVObject)
         console.log(1,this.AHUArray,this.VAVArray,1);
-        
-        // console.log(map);
-        // const a1=Object.keys(AHUObject).filter(item=>item.includes('x36a1'))
-        
-        // for(let index of Object.keys(AHUObject)){
-        //   console.log(index);
-        // }
-        // console.log(arr 1);
       }
     }
   },
   mounted(){
     this.gainClientConnected()
+    if(this.gainStateBasicData.includes('clientid')){
+      this.allValue=this.gainStateBasicData
+    }
   },
   methods:{
     ...mapGetters([

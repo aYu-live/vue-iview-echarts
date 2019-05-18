@@ -8,6 +8,7 @@
       v-show="!collapsed"
       width="auto"
       theme="dark"
+      :accordion='true'
       @on-select="handleSelect"
     >
       <template v-for="item in list">
