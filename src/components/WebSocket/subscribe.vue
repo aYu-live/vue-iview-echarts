@@ -14,7 +14,7 @@
             <DropdownItem name='2'>2 - Exactly Once</DropdownItem>
         </DropdownMenu>
     </Dropdown>
-    <span class="margin-5">默认：{{QOS}}</span>
+    <span class="margin-5">默认：qos:{{QOS}}</span>
     <i-button class="sub-button-content"  type='info' @click="subscribe" :disabled='realClient.connected?false:true'>
       订阅
     </i-button>
@@ -42,7 +42,7 @@ export default {
       subTopic:'lm/gw/status/gw1',
       disabled:'',
       topicArr:[],
-      QOS:{qos:0},
+      QOS:0,
       ok:true
     }
   },
@@ -58,9 +58,9 @@ export default {
     realClientConnected:function(nval){
       if(nval===false&&!nval){
         this.disabled=false
-        console.log('订阅主题清空');
         this.realClient.unsubscribe(this.topicArr)
         window.localStorage.setItem('topicArr','')
+        console.log('订阅主题清空',this.topicArr);
         this.topicArr=this.getLocal()
       }
     }
@@ -86,7 +86,7 @@ export default {
       }
     },
     getQos(name){
-      this.QOS=Object({qos:Number.parseInt(name)})
+      this.QOS=Number.parseInt(name)
     },
     subscribe(){
       if(this.subTopic.trim()===''){
@@ -101,7 +101,7 @@ export default {
             this.topicArr.push(obj)
             localStorage.setItem('topicArr',JSON.stringify(this.topicArr))
             client.subscribe(this.subTopic,this.QOS)
-            console.log('订阅成功',Object.values(client.messageIdToTopic));
+            console.log('订阅成功',client);
             this.$Message.success(`订阅'${this.subTopic}'主题成功!`)
             client.on("message", (topic, payload)=> {
               const outputArr = (Uint8ArrayToString(payload))
@@ -119,11 +119,10 @@ export default {
     },
     closeSubTopic(topic){
       const client=this.realClient
-      console.log(topic.subTopic,this.topicArr);
       client.unsubscribe(topic.subTopic)
       this.topicArr=deleteByArray(topic.subTopic,this.topicArr)
       window.localStorage.setItem('topicArr',JSON.stringify(this.topicArr))
-      this.$Message.error('取消订阅成功')
+      this.$Message.error('取消订阅成功',client)
     }
   }
 }

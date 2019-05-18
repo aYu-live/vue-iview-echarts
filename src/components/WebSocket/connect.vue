@@ -91,7 +91,6 @@ export default {
   },
   computed:{
     realClientConnected(){
-      console.log('computed!');
       return this.$store.state.mqttData.client.connected
     }
   },

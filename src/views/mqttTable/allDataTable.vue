@@ -1,21 +1,21 @@
 <template>
   <div class="dataTable-wrapper">
-    <h1 v-if="connected">{{errorMes}}</h1>
-     <!-- <real-data :realData='JSON.parse(JSON.stringify(this.realData))' ></real-data>
-     <div v-for="(item,index) of VAVArray" :key="index">
-       {{item}}------{{index}}
+    <h3 v-if="!connected">WebSocket未连接！
+       <i-button to="/mqtt/websocket/" type='error'>点此跳转到WebSocket页面</i-button>
+      </h3>
+      <h2 v-else-if="connected&&topicConnected">未订阅主题！
+       <i-button to="/mqtt/websocket/" type='error'>点此跳转到WebSocket页面</i-button>
+      </h2>
+      <div v-else>
+        <Card class="table1-card-wrapper" title="AHU数据显示">
+          <Table :columns="AHUcolums" :data='AHUArray' :stripe='false' :border='true' :loading='Object.keys(allValue).length==0' :highlight-row='true' size='large' :no-data-text='errorData'>
+          </Table>
+        </Card>
+        <Card class="table2-card-wrapper" title="VAV数据显示">
+          <Table :columns="VAVcolums" :data='VAVArray' :stripe='false' :border='true' :loading='Object.keys(allValue).length==0' :highlight-row='true' size='large' :no-data-text='errorData'>
+          </Table>
+        </Card>
      </div>
-     <div v-for="(item,index) of AHUArray" :key="index">
-       {{item}}------{{index}}
-     </div> -->
-     <Card class="table1-card-wrapper" title="AHU数据显示">
-      <Table :columns="AHUcolums" :data='AHUArray' :stripe='false' :border='true' :loading='Object.keys(allValue).length==0' :highlight-row='true' size='large'>
-      </Table>
-     </Card>
-     <Card class="table2-card-wrapper" title="VAV数据显示">
-      <Table :columns="VAVcolums" :data='VAVArray' :stripe='false' :border='true' :loading='Object.keys(allValue).length==0' :highlight-row='true' size='large'>
-      </Table>
-     </Card>
      <BackTop :height="100" :bottom="200">
         <div class="top">返回顶端</div>
     </BackTop>
@@ -34,6 +34,9 @@ export default {
       errorMes:'WebSocket未连接!',
       connected:null,
       checkConnected:this.$store.state.mqttData.client.connected&&(this.$store.state.mqttData.client.connected===true),
+      topicConnected:null,
+      checkTopicConnected:localStorage.getItem('topicArr'),
+      errorData:'正在等待WebSocket传输数据，请等待...',
       VAVArray:[],
       AHUArray:[],
       allValue:{},
@@ -56,7 +59,7 @@ export default {
         const VAVstrArray =filterVAVArrSame(VAVObject) 
         this.AHUArray=returnAHUArray(AHUstrArray,AHUObject)
         this.VAVArray=returnVAVArray(VAVstrArray,VAVObject)
-        console.log(1,this.AHUArray,this.VAVArray,1);
+        console.log(this.AHUArray,this.VAVArray);
       }
     }
   },
@@ -72,9 +75,15 @@ export default {
     ]),
     gainClientConnected(){
       if(this.checkConnected){
-        this.connected=false
-      }else{
         this.connected=true
+        if(this.checkTopicConnected.includes('lm/gw/status/gw1')&&this.checkTopicConnected){
+          this.topicConnected=false
+        }
+        else{
+          this.topicConnected=true
+        }
+      }else{
+        this.connected=false
         this.$Message.error(this.errorMes)
       }
     }

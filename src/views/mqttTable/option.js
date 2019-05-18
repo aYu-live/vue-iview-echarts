@@ -1,6 +1,7 @@
 import echarts from 'echarts/lib/echarts'
 
 export const option={
+
   tooltip: {
     trigger: 'axis',
     axisPointer: {
@@ -50,7 +51,7 @@ export const option={
     splitLine: {show: false},
     axisLine: {
       lineStyle: {
-        color: '#033D6B'
+        color: '#033D6B',
       },
       textStyle: {
         fontSize: 20
@@ -65,7 +66,7 @@ export const option={
       showAllSymbol: true,
       symbol: 'emptyCircle',
       symbolSize: 8,
-      data: []
+      data: [],
     },
     {
       name: '最小风量',
@@ -80,7 +81,7 @@ export const option={
       name: '风阀开度',
       type: 'bar',
       barGap: '-100%',
-      barWidth: 10,
+      barWidth: 15  ,
       itemStyle: {
         normal: {
           color: new echarts.graphic.LinearGradient(
@@ -99,7 +100,7 @@ export const option={
     {
       name: '实测风量',
       type: 'bar',
-      barWidth: 10,
+      barWidth: 15,
       itemStyle: {
         normal: {
           barBorderRadius: 5,

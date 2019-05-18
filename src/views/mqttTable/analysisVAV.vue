@@ -1,11 +1,13 @@
 <template>
   <div class="analysisVAV-wrapper">
-    <h1 v-if="connected">{{errorMes}}
+    <h1 v-if="!connected">{{errorMes}}
       </h1>
     <Card title="VAV运行分析图">
-      <h3 v-if="connected">WebSocket未连接
+      <h3 v-if="!connected">WebSocket未连接
       <i-button to="/mqtt/websocket/" type='error'>点此跳转到WebSocket页面</i-button></h3>
-      <h2 v-else-if="allValue.length==0">数据加载中</h2>
+      <h2 v-else-if="connected&&topicConnected">未订阅主题...
+      <i-button to="/mqtt/websocket/" type='error'>点此跳转到WebSocket页面</i-button>
+      </h2>
       <real-data v-else :option='option'></real-data>
     </Card>
   </div>
@@ -26,7 +28,9 @@ export default {
       basicData:'',
       errorMes:'WebSocket未连接！请先连接！',
       connected:null,
+      topicConnected:null,
       checkConnected:this.$store.state.mqttData.client.connected&&(this.$store.state.mqttData.client.connected===true),
+      checkTopicConnected:localStorage.getItem('topicArr'),
       allValue:{},
       option: option
     }
@@ -80,9 +84,15 @@ export default {
     ]),
     gainClientConnected(){
       if(this.checkConnected){
-        this.connected=false
-      }else{
         this.connected=true
+        if(this.checkTopicConnected.includes('lm/gw/status/gw1')&&this.checkTopicConnected){
+          this.topicConnected=false
+        }
+        else{
+          this.topicConnected=true
+        }
+      }else{
+        this.connected=false
         this.$Message.error(this.errorMes)
       }
     }
