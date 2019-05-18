@@ -304,6 +304,15 @@ export const routerMap = [
           icon:'logo-buffer'
         },
         component: ()=>import('@/views/mqttTable/allDataTable.vue')
+      },
+      {
+        path: 'analysisVAV',
+        name: 'analysisVAV',
+        meta: {
+          title: 'VAV运行分析图',
+          icon:'logo-buffer'
+        },
+        component: ()=>import('@/views/mqttTable/analysisVAV.vue')
       }
     ]
   }

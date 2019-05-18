@@ -51,13 +51,12 @@ export default {
       })
       if(this.realData.length<200){
         this.realData.push(dataobj)
+        
+        console.log(this.realData);
       }else{
         this.realData.shift()
         this.realData.push(dataobj)
       }
-        // this.realData.push(dataobj)
-      
-      // console.log(JSON.parse(JSON.stringify(this.realData)))
     } 
   },
   mounted(){

@@ -133,3 +133,157 @@ export const formatDate=((time)=>{
     const seconds=time.getSeconds()<10?'0'+time.getSeconds():time.getSeconds()
     return hours+':'+minutes+':'+seconds
   })
+
+/**
+ * @description AHU按设备名号数分组 返回对象
+ * @param {*} str 
+ * @param {*} arr 
+ */
+function returnAHUObj(str,arr){
+  const obj=new Object()
+  Object.keys(arr).forEach((item,index) => {
+    if(item.includes(str)){
+      obj[item.substr(5,2)]=(arr[item])/10
+    }
+  })
+  return obj
+}
+
+/**
+ * @description VAV按设备名号数分组 返回对象
+ * @param {*} str 
+ * @param {*} arr 
+ */
+function returnVAVObj(str,arr){
+  const obj=new Object()
+  Object.keys(arr).forEach((item,index) => {
+    if(item.includes(str)){
+      if(['T','P','A'].includes(item.substr(6,1))){
+        obj[item.substr(6,1)]=(arr[item])/10
+      }else{
+        obj[item.substr(6,1)]=(arr[item])
+      }
+    }
+  })
+  return obj
+}
+
+/**
+ * @description 处理AHU的数据，返回数据数组
+ * @param {*} strArr 
+ * @param {*} arr 
+ */
+export const returnAHUArray=((strArr,arr)=>{
+  const arr1=[]
+  for (let i = 0; i < strArr.length; i++) {
+    var obj=returnAHUObj(strArr[i],arr)
+    obj['id']=i+1
+    obj['device']='AHU'+(i+1)
+    obj['partition']='风柜'
+    arr1.push(obj)
+  }
+  return arr1
+})
+
+/**
+ * @description 处理VAV的数据，返回数据数组
+ * @param {*} strArr 
+ * @param {*} arr 
+ */
+export const returnVAVArray=((strArr,arr)=>{
+  const arr1=[]
+  for (let i = 0; i < strArr.length; i++) {
+    var obj=returnVAVObj(strArr[i],arr)
+    obj['id']=i+1
+    obj['device']='VAV-'+((i+1)<10?'0'+(i+1):(i+1))
+    obj['partition']=casePartition((i+1))
+    arr1.push(obj)
+  }
+  return arr1
+})
+
+
+/**
+ * 
+ * @description 创建数组
+ * @param {} str1 
+ * @param {*} str2 
+ */
+function pushArr(str1,str2){
+  const arr=[]
+  for(let i=str1;i<=str2;i++){
+    i=i<10?'0'+i:i
+    arr.push(i)
+  }
+  return arr
+}
+
+/**
+ * @description 筛选AHU重复数据，返回不重复的数据数组
+ * @param {*} AHUObject 
+ */
+export const filterAHUArrSame=((AHUObject)=>{
+  return Array.from(new Set(Object.keys(AHUObject).map(item=>item.substr(0,5))))
+}) 
+
+/**
+ * @description 筛选VAV重复数据，返回不重复的数据数组
+ * @param {*} AHUObject 
+ */
+export const filterVAVArrSame=((AHUObject)=>{
+  return Array.from(new Set(Object.keys(AHUObject).map(item=>item.substr(0,6))))
+})
+
+export const getValuesByKeys=((obj,str)=>{
+  const newObj=new Object()
+  Object.keys(obj).forEach(item=>{
+    if(item.substr(6,1).includes(str)){
+      newObj[item]=obj[item]
+    }
+  })
+  return newObj
+})
+
+/**
+ * @description 返回分区编号
+ * @param {*} str 
+ */
+function casePartition(str){
+  str=str<10?'0'+str:str
+  if(pushArr(1,5).includes(str)){
+    return '01'
+  }
+  if(pushArr(6,11).includes(str)){
+    return '02'
+  }
+  if(pushArr(12,15).includes(str)){
+    return '03'
+  }
+  if(pushArr(16,19).includes(str)){
+    return '04'
+  }
+  if(pushArr(20,23).includes(str)){
+    return '05'
+  }
+  if(pushArr(24,29).includes(str)){
+    return '06'
+  }
+  if(pushArr(30,35).includes(str)){
+    return '07'
+  }
+  if(pushArr(36,41).includes(str)){
+    return '08'
+  }
+  if(pushArr(42,45).includes(str)){
+    return '09'
+  }
+  if(pushArr(46,49).includes(str)){
+    return '10'
+  }
+  if(pushArr(50,53).includes(str)){
+    return '11'
+  }
+  if(pushArr(54,61).includes(str)){
+    return '12'
+  }
+}

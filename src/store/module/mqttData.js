@@ -2,7 +2,12 @@
 const state = {
   client:{},
   basicData:'',
-  client_id:''
+  client_id:'',
+  airMax:[],
+  airMin:[],
+  airReal:[],
+  airOpen:[],
+  tempReal:[]
 }
 
 const getters = {
@@ -11,6 +16,21 @@ const getters = {
   },
   showBasicData(state) {
     return state.basicData
+  },
+  showAirMax(state){
+    return state.airMax
+  },
+  showAirMin(state){
+    return state.airMin
+  },
+  showAirReal(state){
+    return state.airReal
+  },
+  showAirOpen(state){
+    return state.airOpen
+  },
+  showTempReal(state){
+    return state.tempReal
   }
 }
 
@@ -21,6 +41,21 @@ const mutations = {
   },
   saveBasicDataArr(state,basicData){
     state.basicData=basicData
+  },
+  saveAirMax(state,airMax){
+    state.airMax=airMax
+  },
+  saveAirMin(state,airMin){
+    state.airMin=airMin
+  },
+  saveAirReal(state,airReal){
+    state.airReal=airReal
+  },
+  saveAirOpen(state,airOpen){
+    state.airOpen=airOpen
+  },
+  saveTempReal(state,tempReal){
+    state.tempReal=tempReal
   }
 }
 
@@ -30,6 +65,21 @@ const actions = {
   },
   saveBasicData({commit}, basicData) {
     commit('saveBasicDataArr', basicData)    // 提交到mutations中处理    
+  },
+  saveAirMaxData({commit}, airMax) {
+    commit('saveAirMax', airMax)    // 提交到mutations中处理    
+  },
+  saveAirMinData({commit}, airMin) {
+    commit('saveAirMin', airMin)    // 提交到mutations中处理    
+  },
+  saveAirRealData({commit}, airReal) {
+    commit('saveAirReal', airReal)    // 提交到mutations中处理    
+  },
+  saveAirOpenData({commit}, airOpen) {
+    commit('saveAirOpen', airOpen)    // 提交到mutations中处理    
+  },
+  saveTempRealData({commit}, tempReal) {
+    commit('saveTempReal', tempReal)    // 提交到mutations中处理    
   }
 }
 

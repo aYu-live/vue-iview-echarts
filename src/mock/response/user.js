@@ -99,7 +99,8 @@ export const authorization = () => {
           realData:true,
           dataWatch:true,
           upload_excel:true,
-          allDataTable:true
+          allDataTable:true,
+          analysisVAV:true
         },
         component: {
           edit_button: true,
