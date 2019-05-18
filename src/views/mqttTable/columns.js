@@ -2,7 +2,8 @@ export const AHUcolums=
 [
   {
     title: '序号',
-    key: 'id'
+    key: 'id',
+    sortable:true
   },
   {
     title: '分区',
@@ -10,47 +11,58 @@ export const AHUcolums=
   },
   {
     title: '设备',
-    key: 'device'
+    key: 'device',
+    sortable:true
   },
   {
     title: '静压1',
-    key: 'P1'
+    key: 'P1',
+    sortable:true
   },
   {
     title: '静压2',
-    key: 'P2'
+    key: 'P2',
+    sortable:true
   },
   {
     title: '实测风量',
-    key: 'BF'
+    key: 'BF',
+    sortable:true
   },
   {
     title: '需求风量',
-    key: 'NF'
+    key: 'NF',
+    sortable:true
   },
   {
     title: '风机频率',
-    key: 'HZ'
+    key: 'HZ',
+    sortable:true
   },
   {
     title: '回风温度',
-    key: 'RT'
+    key: 'RT',
+    sortable:true
   },
   {
     title: '水阀开度',
-    key: 'PV'
+    key: 'PV',
+    sortable:true
   },
   {
     title: '送风温度',
-    key: 'A1'
+    key: 'A1',
+    sortable:true
   },
   {
     title: '最小风量',
-    key: 'A2'
+    key: 'A2',
+    sortable:true
   },
   {
     title: '最大风量',
-    key: 'A3'
+    key: 'A3',
+    sortable:true
   }
 ]
 
@@ -63,11 +75,13 @@ export const VAVcolums=
   },
   {
     title: '分区',
-    key: 'partition'
+    key: 'partition',
+    sortable:true
   },
   {
     title: '设备',
-    key: 'device'
+    key: 'device',
+    sortable:true
   },
   {
     title: '实测温度',

@@ -4,10 +4,14 @@
       </h1>
     <Card title="VAV运行分析图">
       <h3 v-if="!connected">WebSocket未连接
-      <i-button to="/mqtt/websocket/" type='error'>点此跳转到WebSocket页面</i-button></h3>
+        <i-button to="/mqtt/websocket/" type='error'>点此跳转到WebSocket页面</i-button>
+      </h3>
       <h2 v-else-if="connected&&topicConnected">未订阅主题...
-      <i-button to="/mqtt/websocket/" type='error'>点此跳转到WebSocket页面</i-button>
+        <i-button to="/mqtt/websocket/" type='error'>点此跳转到WebSocket页面</i-button>
       </h2>
+      <Card v-else-if="!(Object.keys(allValue).length)">
+        <h2>正在等待WebSocket传输数据，请等待...</h2>
+      </Card>
       <real-data v-else :option='option'></real-data>
     </Card>
   </div>
@@ -17,7 +21,7 @@
 import {mapGetters, mapActions} from 'vuex'
 import {getValuesByKeys} from '@/lib/tools'
 import {bar_line_realData} from '_c/echarts'
-import {option} from './option'
+import {VAVoption} from './option'
 export default {
   name:'analysisVAV',
   components: {
@@ -32,7 +36,7 @@ export default {
       checkConnected:this.$store.state.mqttData.client.connected&&(this.$store.state.mqttData.client.connected===true),
       checkTopicConnected:localStorage.getItem('topicArr'),
       allValue:{},
-      option: option
+      option: null
     }
   },
   computed:{
@@ -67,6 +71,7 @@ export default {
   },
   mounted(){
     this.gainClientConnected()
+    this.option=VAVoption
     if(this.gainStateBasicData.includes('clientid')){
       this.allValue=this.gainStateBasicData
     }

@@ -56,7 +56,7 @@ export default {
       this.connected=nval
     }
   },
-  mounted(){
+  beforeMount(){
     this.connected=this.$store.state.mqttData.client.connected&&this.$store.state.mqttData.client.connected===true?true:false
   },
   methods:{

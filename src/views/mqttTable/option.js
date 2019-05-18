@@ -1,6 +1,6 @@
 import echarts from 'echarts/lib/echarts'
 
-export const option={
+export const VAVoption={
 
   tooltip: {
     trigger: 'axis',
@@ -63,18 +63,18 @@ export const option={
       name: '最大风量',
       type: 'line',
       smooth: true,
-      showAllSymbol: true,
+      showAllSymbol: false,
       symbol: 'emptyCircle',
-      symbolSize: 8,
+      symbolSize: 1,
       data: [],
     },
     {
       name: '最小风量',
       type: 'line',
       smooth: true,
-      showAllSymbol: true,
+      showAllSymbol: false,
       symbol: 'emptyCircle',
-      symbolSize: 8,
+      symbolSize: 1,
       data: []
     },
     {

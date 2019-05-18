@@ -193,7 +193,11 @@ export const returnVAVArray=((strArr,arr)=>{
   for (let i = 0; i < strArr.length; i++) {
     var obj=returnVAVObj(strArr[i],arr)
     obj['id']=i+1
-    obj['device']='VAV-'+((i+1)<10?'0'+(i+1):(i+1))
+    if(i===29){
+      obj['device']='VAV-'+(i+1)+'-DT'
+    }else{
+      obj['device']='VAV-'+((i+1)<10?'0'+(i+1):(i+1))
+    }
     obj['partition']=casePartition((i+1))
     arr1.push(obj)
   }

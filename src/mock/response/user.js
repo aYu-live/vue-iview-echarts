@@ -100,7 +100,13 @@ export const authorization = () => {
           dataWatch:true,
           upload_excel:true,
           allDataTable:true,
-          analysisVAV:true
+          analysisVAV:true,
+          VAV:true,
+          airMin:true,
+          airMax:true,
+          airReal:true,
+          airOpen:true,
+          tempReal:true
         },
         component: {
           edit_button: true,

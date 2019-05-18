@@ -1,6 +1,6 @@
 import Layout from '@/views/layout.vue'
 import bigdata from '@/views/bigdata/bigdata.vue'
-import WebSocket from '@/views/WebSocket/WebSocket.vue'
+import VAV from '@/views/mqttTable/VAV/VAV.vue'
 export const routerMap = [
   {path: '/',
     // alias: '/home_page',
@@ -294,7 +294,7 @@ export const routerMap = [
           title: 'WebSocket',
           icon:'logo-buffer'
         },
-        component: WebSocket
+        component: ()=>import('@/views/WebSocket/WebSocket.vue')
       },
       {
         path: 'allDataTable',
@@ -306,14 +306,71 @@ export const routerMap = [
         component: ()=>import('@/views/mqttTable/allDataTable.vue')
       },
       {
-        path: 'analysisVAV',
-        name: 'analysisVAV',
+        path: 'VAV',
+        name: 'VAV',
         meta: {
-          title: 'VAV运行分析图',
+          title: 'VAV分析',
           icon:'logo-buffer'
         },
-        component: ()=>import('@/views/mqttTable/analysisVAV.vue')
-      }
+        component:VAV,
+        children:[
+          {
+            path: 'analysisVAV',
+            name: 'analysisVAV',
+            meta: {
+              title: 'VAV运行分析图',
+              icon:'logo-buffer'
+            },
+            component: ()=>import('@/views/mqttTable/analysisVAV.vue')
+          },
+          {
+            path: 'tempReal',
+            name: 'tempReal',
+            meta: {
+              title: '实测温度分析',
+              icon:'logo-buffer'
+            },
+            component: ()=>import('@/views/mqttTable/VAV/tempReal.vue')
+          },
+          {
+            path: 'airMin',
+            name: 'airMin',
+            meta: {
+              title: '最小风量分析',
+              icon:'logo-buffer'
+            },
+            component: ()=>import('@/views/mqttTable/VAV/airMin.vue')
+          },
+          {
+            path: 'airMax',
+            name: 'airMax',
+            meta: {
+              title: '最大风量分析',
+              icon:'logo-buffer'
+            },
+            component: ()=>import('@/views/mqttTable/VAV/airMax.vue')
+          },
+          {
+            path: 'airReal',
+            name: 'airReal',
+            meta: {
+              title: '实测风量分析',
+              icon:'logo-buffer'
+            },
+            component: ()=>import('@/views/mqttTable/VAV/airReal.vue')
+          },
+          {
+            path: 'airOpen',
+            name: 'airOpen',
+            meta: {
+              title: '风阀开度分析',
+              icon:'logo-buffer'
+            },
+            component: ()=>import('@/views/mqttTable/VAV/airOpen.vue')
+          }
+        ]
+      },
+      
     ]
   }
 ]
