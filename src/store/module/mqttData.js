@@ -37,7 +37,6 @@ const getters = {
 const mutations = {
   saveClientObj(state,client){
     state.client=client
-    console.log('state',state.client);
   },
   saveBasicDataArr(state,basicData){
     state.basicData=basicData

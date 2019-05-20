@@ -1,6 +1,7 @@
 import Layout from '@/views/layout.vue'
 import bigdata from '@/views/bigdata/bigdata.vue'
 import VAV from '@/views/mqttTable/VAV/VAV.vue'
+import AHU from '@/views/mqttTable/AHU/AHU.vue'
 export const routerMap = [
   {path: '/',
     // alias: '/home_page',
@@ -309,7 +310,7 @@ export const routerMap = [
         path: 'VAV',
         name: 'VAV',
         meta: {
-          title: 'VAV分析',
+          title: 'VAV设备分析',
           icon:'logo-buffer'
         },
         component:VAV,
@@ -321,7 +322,7 @@ export const routerMap = [
               title: 'VAV运行分析图',
               icon:'logo-buffer'
             },
-            component: ()=>import('@/views/mqttTable/analysisVAV.vue')
+            component: ()=>import('@/views/mqttTable/VAV/analysisVAV.vue')
           },
           {
             path: 'tempReal',
@@ -370,7 +371,26 @@ export const routerMap = [
           }
         ]
       },
-      
+      {
+        path: 'AHU',
+        name: 'AHU',
+        meta: {
+          title: 'AHU设备分析',
+          icon:'logo-buffer'
+        },
+        component:AHU,
+        children:[
+          {
+            path: 'airOpen',
+            name: 'airOpen',
+            meta: {
+              title: '风阀开度分析',
+              icon:'logo-buffer'
+            },
+            component: ()=>import('@/views/mqttTable/VAV/airOpen.vue')
+          }
+        ]
+      }
     ]
   }
 ]

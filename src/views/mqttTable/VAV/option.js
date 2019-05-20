@@ -81,14 +81,12 @@ export const VAVoption={
       name: '风阀开度',
       type: 'bar',
       barGap: '-100%',
-      barWidth: 15  ,
       itemStyle: {
         normal: {
           color: new echarts.graphic.LinearGradient(
             0, 0, 0, 1,
             [
               {offset: 0, color: 'rgba(4,43,81,0.7)'},
-              {offset: 0.7, color: 'rgba(4,43,81,0.3)'},
               {offset: 1, color: 'rgba(4,43,81,0.1)'}
             ]
           )
@@ -100,7 +98,6 @@ export const VAVoption={
     {
       name: '实测风量',
       type: 'bar',
-      barWidth: 15,
       itemStyle: {
         normal: {
           barBorderRadius: 5,

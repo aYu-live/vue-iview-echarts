@@ -289,3 +289,12 @@ function casePartition(str){
     return '12'
   }
 }
+
+export const createhArr=(str1,str2)=>{
+  const arr=[]
+  for(let i=str1;i<=str2;i++){
+    i=i<10?'0'+i:i.toString()
+    arr.push(i)
+  }
+  return arr
+}

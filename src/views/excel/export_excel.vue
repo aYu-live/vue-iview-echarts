@@ -17,22 +17,22 @@
         <Icon type="ios-download-outline"></Icon>
         导出CSV原始数据
         </Button>
-    <Button 
-      class="margin-left-10" 
-      size="large" 
-      @click="exportData(2)"
-    >
-    <Icon type="ios-download-outline"></Icon>
-    导出CSV排序后的数据
-    </Button>
-    <Button 
-      class="margin-left-10" 
-      size="large"
-      icon="ios-close"
-      :loading='exportLoading'
-      @click="deletData"
-    >清空数据
-    </Button>
+        <Button 
+          class="margin-left-10" 
+          size="large" 
+          @click="exportData(2)"
+        >
+        <Icon type="ios-download-outline"></Icon>
+        导出CSV排序后的数据
+        </Button>
+        <Button 
+          class="margin-left-10" 
+          size="large"
+          icon="ios-close"
+          :loading='exportLoading'
+          @click="deletData"
+        >清空数据
+        </Button>
       </Row>
     </Card>
     <Row class="margin-top-10">

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <real-data :realData='JSON.parse(JSON.stringify(this.realData))' ></real-data>
+    <real-data :realData='JSON.parse(JSON.stringify(this.realData))' :seriesName='seriesName' :titleText='titleText'></real-data>
   </div>
 </template>
 
@@ -20,7 +20,9 @@ export default {
       dataId:[],
       dataName:[],
       dataTime:[],
-      dataValue:[]
+      dataValue:[],
+      seriesName:'模拟数据',
+      titleText:'实时数据监控'
     }
   },
   methods:{
@@ -57,6 +59,7 @@ export default {
         this.realData.shift()
         this.realData.push(dataobj)
       }
+      console.log(this.realData);
     } 
   },
   mounted(){

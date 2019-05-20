@@ -1,5 +1,5 @@
 <template>
-  <div class="analysisVAV-wrapper">
+  <div class="VAV-wrapper">
     <h1 v-if="!connected">{{errorMes}}
       </h1>
     <Card title="VAV运行分析图">
@@ -41,7 +41,7 @@ export default {
   },
   computed:{
     gainStateBasicData(){
-      return this.$store.state.mqttData.basicData
+      return this.showBasicData()
     }
   },
   watch:{
@@ -50,22 +50,18 @@ export default {
         this.allValue=JSON.parse(nval)
         const VAVObject=this.allValue.VAV
         const AHUObject=this.allValue.AHU
-        const TEMP=getValuesByKeys(VAVObject,'T')
-        const MAX=getValuesByKeys(VAVObject,'M')
-        const MIN=getValuesByKeys(VAVObject,'N')
-        const REAL=getValuesByKeys(VAVObject,'F')
-        const OPEN=getValuesByKeys(VAVObject,'P')
+        const TEMP=this.showTempReal()
+        const MAX=this.showAirMax()
+        const MIN=this.showAirMin()
+        const REAL=this.showAirReal()
+        const OPEN=this.showAirOpen()
         const xAxisData=Object.keys(TEMP).map(item=>item.substr(4,2))
         this.option.xAxis.data=xAxisData
         this.option.series[0].data=Object.values(MAX)
         this.option.series[1].data=Object.values(MIN)
         this.option.series[2].data=Object.values(OPEN)
         this.option.series[3].data=Object.values(REAL)
-        this.saveAirMaxData(MAX)
-        this.saveAirMinData(MIN)
-        this.saveAirRealData(REAL)
-        this.saveAirOpenData(OPEN)
-        this.saveTempRealData(TEMP)
+        
       }
     }
   },
@@ -78,7 +74,12 @@ export default {
   },
   methods:{
     ...mapGetters([
-      'showBasicData'
+      'showBasicData',
+      'showAirMax',
+      'showAirMin',
+      'showAirReal',
+      'showAirOpen',
+      'showTempReal',
     ]),
     ...mapActions([
       'saveAirMaxData',
@@ -106,12 +107,5 @@ export default {
 </script>
 
 <style lang="less">
-.analysisVAV-wrapper{
-  .ivu-card-head{
-    p{
-      height: 100%;
-      font-size: 20px;
-    }
-  }
-}
+@import './common.less';
 </style>

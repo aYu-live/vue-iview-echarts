@@ -20,7 +20,7 @@
             ref="AHUtables"
           >
           </Table>
-          <Row class="margin-top-20">
+          <Row class="margin-top-20" v-show="Object.keys(AHUArray).length!==0">
             <Button 
               size="large"
               icon='md-download' 
@@ -67,7 +67,7 @@
             ref="VAVtables"
           >
           </Table>
-          <Row class="margin-top-20">
+          <Row class="margin-top-20" v-show="Object.keys(AHUArray).length!==0">
             <Button 
               size="large"
               icon='md-download' 

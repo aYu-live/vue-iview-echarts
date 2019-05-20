@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import {getValuesByKeys} from '@/lib/tools'
 import {deleteByArray,checkArrayhas,Uint8ArrayToString,formatDate} from '@/lib/tools'
 import {mapActions, mapGetters,mapState} from 'vuex'
 export default {
@@ -48,10 +49,10 @@ export default {
   },
   computed:{
     realClientConnected(){
-      return this.$store.state.mqttData.client.connected
+      return this.showStateClient().connected
     },
     realClient(){
-      return this.$store.state.mqttData.client
+      return this.showStateClient()
     }
   },
   watch:{
@@ -70,10 +71,15 @@ export default {
   },
   methods:{
     ...mapGetters([
-      'showStateClient'
+      'showStateClient',
     ]),
     ...mapActions([
-      'saveBasicData'
+      'saveBasicData',
+      'saveAirMaxData',
+      'saveAirMinData',
+      'saveAirRealData',
+      'saveAirOpenData',
+      'saveTempRealData'
     ]),
     ...mapGetters([
       'showBasicData'
@@ -107,6 +113,18 @@ export default {
               const outputArr = (Uint8ArrayToString(payload))
               if(outputArr.includes('client')){
                 this.saveBasicData(outputArr)
+                const allValue=JSON.parse(outputArr)
+                const VAVObject=allValue.VAV
+                const TEMP=getValuesByKeys(VAVObject,'T')
+                const MAX=getValuesByKeys(VAVObject,'M')
+                const MIN=getValuesByKeys(VAVObject,'N')
+                const REAL=getValuesByKeys(VAVObject,'F')
+                const OPEN=getValuesByKeys(VAVObject,'P')
+                this.saveAirMaxData(MAX)
+                this.saveAirMinData(MIN)
+                this.saveAirRealData(REAL)
+                this.saveAirOpenData(OPEN)
+                this.saveTempRealData(TEMP)
               }else{
                 this.saveBasicData(formatDate(new Date())+ outputArr)
               }

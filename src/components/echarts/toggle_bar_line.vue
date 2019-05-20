@@ -1,6 +1,4 @@
 <template>
-  <main>
-    <section>
       <figure>
       <i-button @click="toggleLine" class="margin-10">切换折线图</i-button>
       <i-button @click="toggleBar">切换柱形图</i-button>
@@ -12,8 +10,6 @@
           autoresize
         />
         </figure>
-    </section>
-  </main>
 </template>
 
 <script>
@@ -37,10 +33,9 @@ export default {
         renderer: options.renderer
       },
       line_bar_type:'line',
-      seconds: -1,
       option: {
         title: {
-          text: this.titleText
+          text: this.echartTitle
         },
         toolbox: {
           feature: {
@@ -58,22 +53,20 @@ export default {
         }],
         tooltip: {
           trigger: 'axis',
-          formatter: function (params) {
-            params = params[0];
-            var date = new Date(params.name);
-            return date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + '/' + date.getSeconds() + ' : ' + params.value[1];
-          },
           axisPointer: {
-            animation: true
+          type: 'cross'
+          },
+          textStyle: {
+            fontSize: 20
           }
         },
         xAxis: {
-          type: 'time',
-          splitLine: {
-            show: false
-          },
-          min:function(value) {
-            return value.min - 50;
+          data: this.xData,
+          axisLine: {
+            lineStyle: {
+              color: '#033D6B',
+              width:'1'//坐标线的宽度
+            }
           }
         },
         yAxis: {
@@ -90,14 +83,13 @@ export default {
             normal:{  
 　　　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
               color: function (params){
-                var colorList = ['rgb(164,205,238)','rgb(42,170,227)','rgb(25,46,94)','rgb(195,229,235)'];
+                var colorList = ['rgb(244,115,120)','rgb(42,170,227)','rgb(25,46,94)','rgb(107,208,137)'];
                 return colorList[params.dataIndex>3?params.dataIndex%4:params.dataIndex];
               }
             }
           },
           type: this.line_bar_type,
           showSymbol: false,
-          hoverAnimation: false,
           data: this.realData
         }]
       }
@@ -108,11 +100,15 @@ export default {
       type:Array,
       default:()=>[]
     },
-    seriesName:{
+    xData:{
+      type:Array,
+      default:()=>[]
+    },
+    echartTitle:{
       type:String,
       default:()=>''
     },
-    titleText:{
+    seriesName:{
       type:String,
       default:()=>''
     },
