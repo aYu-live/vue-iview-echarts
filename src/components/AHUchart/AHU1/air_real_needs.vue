@@ -1,29 +1,28 @@
 <template>
   <div>
-    <real-data :realData='this.realData' :seriesName='seriesName' :titleText='titleText'></real-data>
+    <ahu-chart :realData='JSON.parse(JSON.stringify(this.realData))' :seriesName='seriesName' :titleText='titleText'></ahu-chart>
   </div>
 </template>
 
 <script>
 import clonedeep from 'clonedeep'
-import {realData} from '_c/echarts'
+import ahuChart from '_c/AHUchart'
 import {getRealData} from '@/api/data'
 import { setInterval, setTimeout, clearInterval } from 'timers';
 export default {
   name:'dataWatch',
   components:{
-    realData
+    ahuChart
   },
   data(){
     return{
-      realData1:[],
       realData:[],
       dataId:[],
       dataName:[],
       dataTime:[],
       dataValue:[],
       seriesName:'模拟数据',
-      titleText:'实时数据监控',
+      titleText:'实时数据监控'
     }
   },
   methods:{
@@ -45,22 +44,23 @@ export default {
   },
   watch: {
     changeData(val){
-      const dataobj={
+      const dataobj=new Object({
         name:val.dataTime[val.dataTime.length-1],
         value:[
           val.dataTime[val.dataTime.length-1],
           val.dataValue[val.dataValue.length-1]
         ]
-      }
-      if(this.realData1.length<200){
-        this.realData1.push(dataobj)
+      })
+      if(this.realData.length<200){
+        this.realData.push(dataobj)
+        
+        console.log(this.realData);
       }else{
-        this.realData1.shift()
-        this.realData1.push(dataobj) 
+        this.realData.shift()
+        this.realData.push(dataobj)
       }
-      this.realData[0]=this.realData1
-      this.realData=JSON.parse(JSON.stringify(this.realData))
-    }
+      console.log(this.realData);
+    } 
   },
   mounted(){
     this.timer=setInterval(()=>{
