@@ -1,6 +1,6 @@
 <template>
   <div>
-    <real-data :realData='this.realData' :seriesName='seriesName' :titleText='titleText'></real-data>
+    <real-data :realData='realData' :seriesName='seriesName' :titleText='titleText'></real-data>
   </div>
 </template>
 
@@ -59,6 +59,7 @@ export default {
         this.realData1.push(dataobj) 
       }
       this.realData[0]=this.realData1
+      this.realData=clonedeep(this.realData)
     }
   },
   mounted(){

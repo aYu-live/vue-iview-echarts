@@ -41,7 +41,7 @@ export default {
       checkConnected:
         this.showStateClient().connected &&
         this.showStateClient().connected === true,
-      checkTopicConnected: localStorage.getItem("topicArr"),
+      checkTopicConnected: sessionStorage.getItem("topicArr"),
       allValue: {},
       option: null
     };

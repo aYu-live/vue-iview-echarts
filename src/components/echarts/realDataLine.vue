@@ -14,7 +14,7 @@
 
 <script>
 import qs from 'qs'
-
+import clonedeep from 'clonedeep'
 import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/toolbox'
 import 'echarts/lib/component/dataZoom'
@@ -94,7 +94,7 @@ export default {
           type:'line',
           showSymbol: false,
           hoverAnimation: false,
-          data: this.realData
+          data: clonedeep(this.realData[0])
         }]
       }
     }
@@ -132,17 +132,15 @@ export default {
      console.log(val,1);
      this.realData=val
      for(let i=0;i<val.length;i++){
-       this.option.series[i].data=this.realData[i]
+       this.option.series[i].data=clonedeep(this.realData[i])
      }
      
    }
   },
-  mounted () {
-    console.log(this.realData);
+  mounted () {;
     for(let i=0;i<this.option.length;i++){
       this.option.series[i][type]=this.line_bar_type
-      console.log(this.realData);
-      this.option.series[i][data]=this.realData[i]
+      this.option.series[i][data]=clonedeep(this.realData[i])
     }
   },
   

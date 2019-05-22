@@ -124,7 +124,7 @@ export default {
       connected:null,
       checkConnected:this.$store.state.mqttData.client.connected&&(this.$store.state.mqttData.client.connected===true),
       topicConnected:null,
-      checkTopicConnected:localStorage.getItem('topicArr'),
+      checkTopicConnected:sessionStorage.getItem('topicArr'),
       errorData:'正在等待WebSocket传输数据，请等待...',
       VAVArray:[],
       AHUArray:[],

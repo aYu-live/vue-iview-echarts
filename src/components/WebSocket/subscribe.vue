@@ -60,7 +60,7 @@ export default {
       if(nval===false&&!nval){
         this.disabled=false
         this.realClient.unsubscribe(this.topicArr)
-        window.localStorage.setItem('topicArr','')
+        window.sessionStorage.setItem('topicArr','')
         console.log('订阅主题清空',this.topicArr);
         this.topicArr=this.getLocal()
       }
@@ -87,7 +87,7 @@ export default {
     ]),
     getLocal(){
       if(this.$store.state.mqttData.client.connected){
-        return JSON.parse(localStorage.getItem('topicArr')!=='')&&localStorage.getItem('topicArr')?JSON.parse(localStorage.getItem('topicArr')):[]
+        return JSON.parse(sessionStorage.getItem('topicArr')!=='')&&sessionStorage.getItem('topicArr')?JSON.parse(sessionStorage.getItem('topicArr')):[]
       }else{
         return []
       }
@@ -106,7 +106,7 @@ export default {
             const client=this.realClient
             const obj=new Object({'subTopic':this.subTopic})
             this.topicArr.push(obj)
-            localStorage.setItem('topicArr',JSON.stringify(this.topicArr))
+            sessionStorage.setItem('topicArr',JSON.stringify(this.topicArr))
             client.subscribe(this.subTopic,this.QOS)
             console.log('订阅成功',client);
             this.$Message.success(`订阅'${this.subTopic}'主题成功!`)
@@ -142,7 +142,7 @@ export default {
       const client=this.realClient
       client.unsubscribe(topic.subTopic)
       this.topicArr=deleteByArray(topic.subTopic,this.topicArr)
-      window.localStorage.setItem('topicArr',JSON.stringify(this.topicArr))
+      window.sessionStorage.setItem('topicArr',JSON.stringify(this.topicArr))
       this.$Message.error('取消订阅成功',client)
     }
   }

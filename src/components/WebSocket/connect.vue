@@ -117,7 +117,7 @@ export default {
      this.client = mqtt.connect('mqtt:\/\/'+this.host+':'+this.port+'\/mqtt', this.options)
      if(this.client.connected=true){
       this.saveClient(this.client)
-      localStorage.setItem('topicArr','')
+      sessionStorage.setItem('topicArr','')
       console.log('連接了');
      }
     },

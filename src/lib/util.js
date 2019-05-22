@@ -173,11 +173,11 @@ export const getOpenArrByName = (name, routerList) => {
 }
 
 export const localSave = (name, value) => {
-  localStorage.setItem(name, value)
+  sessionStorage.setItem(name, value)
 }
 
 export const localRead = (name) => {
-  return localStorage.getItem(name)
+  return sessionStorage.getItem(name)
 }
 
 
