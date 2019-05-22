@@ -30,9 +30,9 @@ export default {
       dataTime:[],
       dataValue:[],
       seriesName1: ['实测风量','需求风量'],
-      titleText1: '实测风量-需求风量实时监控',
+      titleText1: 'AHU1_实测风量-需求风量实时监控',
       seriesName2: ['实测风量','需求风量'],
-      titleText2: '实测风量-需求风量实时监控',
+      titleText2: 'AHU2_实测风量-需求风量实时监控',
     }
   },
   methods:{

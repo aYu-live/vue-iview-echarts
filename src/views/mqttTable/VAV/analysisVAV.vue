@@ -64,10 +64,10 @@ export default {
       const OPEN = this.showAirOpen();
       const xAxisData = Object.keys(TEMP).map(item => item.substr(4, 2));
       this.option.xAxis.data = xAxisData;
-      this.option.series[0].data = Object.values(MAX);
-      this.option.series[1].data = Object.values(MIN);
-      this.option.series[2].data = Object.values(OPEN);
-      this.option.series[3].data = Object.values(REAL);
+      this.option.series[0].data = Object.values(MAX)
+      this.option.series[1].data = Object.values(MIN)
+      this.option.series[2].data = Object.values(OPEN)
+      this.option.series[3].data = Object.values(REAL)
     }
   },
   mounted() {

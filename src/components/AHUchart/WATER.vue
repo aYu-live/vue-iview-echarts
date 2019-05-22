@@ -14,12 +14,8 @@ export default {
   data(){
     return{
       datas:[],
-      dataId:[],
-      dataName:[],
-      dataTime:[],
-      dataValue:[],
-      realsData:[],
-      needsData:[]
+      data1:[],
+      data2:[]
     }
   },
   props:{
@@ -31,11 +27,11 @@ export default {
       type:String,
       default:()=>''
     },
-    bf:{
+    rt:{
       type:String,
       default:()=>''
     },
-    nf:{
+    pv:{
       type:String,
       default:()=>''
     },
@@ -64,12 +60,12 @@ export default {
     handleAllData(allData){
       const AHU=allData.AHU
       const xTime=new Date(allData.time)
-      const real=AHU[this.bf]/10
-      const need=AHU[this.nf]/10
-      this.realsData.push(createObject(xTime,real))
-      this.needsData.push(createObject(xTime,need))
-      this.datas[0]=this.realsData      
-      this.datas[1]=this.needsData
+      const real=AHU[this.rt]/10
+      const need=AHU[this.pv]/10
+      this.data1.push(createObject(xTime,real))
+      this.data2.push(createObject(xTime,need))
+      this.datas[0]=this.data1      
+      this.datas[1]=this.data2
       this.datas=clonedeep(this.datas)
     }
   }

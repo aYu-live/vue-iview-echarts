@@ -9,7 +9,7 @@ export default {
   name: 'CountTo',
   computed: {
     eleId () {
-      return `count_up_${this._uid}`
+      return `count_up_${this._uid}`  
     },
     countClass () {
       return [
@@ -29,7 +29,7 @@ export default {
      */
     startVal: {
       type: Number,
-      default: 0
+      default: 400
     },
     /**
      * @description 最终值

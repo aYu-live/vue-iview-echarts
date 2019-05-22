@@ -31,14 +31,10 @@ export default {
       type:String,
       default:()=>''
     },
-    bf:{
+    aone:{
       type:String,
       default:()=>''
-    },
-    nf:{
-      type:String,
-      default:()=>''
-    },
+    }
   },
   computed:{
     gainAllData(){
@@ -64,12 +60,9 @@ export default {
     handleAllData(allData){
       const AHU=allData.AHU
       const xTime=new Date(allData.time)
-      const real=AHU[this.bf]/10
-      const need=AHU[this.nf]/10
+      const real=AHU[this.aone]/10
       this.realsData.push(createObject(xTime,real))
-      this.needsData.push(createObject(xTime,need))
-      this.datas[0]=this.realsData      
-      this.datas[1]=this.needsData
+      this.datas[0]=this.realsData
       this.datas=clonedeep(this.datas)
     }
   }
