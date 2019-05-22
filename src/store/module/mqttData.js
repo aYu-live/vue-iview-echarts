@@ -2,6 +2,7 @@
 const state = {
   client:{},
   basicData:'',
+  allData:[],
   client_id:'',
   airMax:[],
   airMin:[],
@@ -17,7 +18,11 @@ const getters = {
   showBasicData(state) {
     return state.basicData
   },
+  showAllData(state) {
+    return state.allData
+  },
   showAirMax(state){
+    console.log('showAirMax',state.airMax);
     return state.airMax
   },
   showAirMin(state){
@@ -40,6 +45,9 @@ const mutations = {
   },
   saveBasicDataArr(state,basicData){
     state.basicData=basicData
+  },
+  saveAllDataArr(state,allData){
+    state.allData=allData
   },
   saveAirMax(state,airMax){
     state.airMax=airMax
@@ -64,6 +72,9 @@ const actions = {
   },
   saveBasicData({commit}, basicData) {
     commit('saveBasicDataArr', basicData)    // 提交到mutations中处理    
+  },
+  saveAllData({commit}, allData) {
+    commit('saveAllDataArr', allData)    // 提交到mutations中处理    
   },
   saveAirMaxData({commit}, airMax) {
     commit('saveAirMax', airMax)    // 提交到mutations中处理    

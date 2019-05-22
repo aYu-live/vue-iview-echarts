@@ -106,7 +106,12 @@ export const authorization = () => {
           airMax:true,
           airReal:true,
           airOpen:true,
-          tempReal:true
+          tempReal:true,
+          AHU:true,
+          air_real_needs:true,
+          airTemp_waterOpen:true,
+          static1_static2_frequency:true,
+          sendAirTemp:true
         },
         component: {
           edit_button: true,

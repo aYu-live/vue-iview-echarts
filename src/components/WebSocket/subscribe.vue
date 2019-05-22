@@ -79,7 +79,8 @@ export default {
       'saveAirMinData',
       'saveAirRealData',
       'saveAirOpenData',
-      'saveTempRealData'
+      'saveTempRealData',
+      'saveAllData'
     ]),
     ...mapGetters([
       'showBasicData'
@@ -114,6 +115,8 @@ export default {
               if(outputArr.includes('client')){
                 this.saveBasicData(outputArr)
                 const allValue=JSON.parse(outputArr)
+                console.log(allValue);
+                this.saveAllData(allValue)
                 const VAVObject=allValue.VAV
                 const TEMP=getValuesByKeys(VAVObject,'T')
                 const MAX=getValuesByKeys(VAVObject,'M')

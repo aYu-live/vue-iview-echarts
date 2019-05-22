@@ -129,4 +129,7 @@ export default {
   font-size: 15px;
   line-height: 20px;
 }
+.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item{
+  padding-left: 40px;
+}
 </style>

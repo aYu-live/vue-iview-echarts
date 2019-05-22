@@ -15,7 +15,7 @@ const router = new Router({
 const HAS_LOGINED = false
 
 router.beforeEach((to, from, next) => {
-  to.meta && setTitle(to.meta.title)
+  // to.meta && setTitle(to.meta.title)
   // if (to.name !== 'login') {
   //   if (HAS_LOGINED) next()
   //   else next({ name: 'login' })

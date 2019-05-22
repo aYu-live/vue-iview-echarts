@@ -8,8 +8,7 @@ const state = {
 const mutations = {
   CONCAT_ROUTES (state, routerList) {
     state.routers = routerList.concat(routes)
-    console.log(routes,state.routers);
-
+    console.log(routerList,routes,state.routers);
     state.hasGetRules = true
   }
 }
@@ -32,8 +31,8 @@ const actions = {
           routerList = routerMap
         } else {
           routerList = getAccesRouterList(routerMap, rules)
+          
         }
-        console.log(routerList)
         commit('CONCAT_ROUTES', routerList)
         resolve(state.routers)
       } catch (err) {

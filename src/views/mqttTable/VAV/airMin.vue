@@ -40,6 +40,10 @@ export default {
       console.log(this.xData);
     }
   },
+  mounted(){
+    this.xData=createhArr(1,Object.keys(this.showAirMin()).length)
+    this.chartData=Object.values(this.showAirMin()).map(item=>item)
+  },
   methods:{
     ...mapGetters([
       'showAirMin',

@@ -1,9 +1,9 @@
 <template>
   <Card title="发布主题">
-    <p><span class="bold">Topic：</span><i-input class="input-content" v-model="pubTopic" placeholder='请输入格式为：Strings/ JSON/ XML/ Characters'></i-input></p>
+    <p><span class="bold">Topic：</span><i-input class="input-content" v-model="pubTopic" placeholder='请输入主题'></i-input></p>
     <div class=" margin-top-10">
       <span class="bold">Payload：</span>
-      <i-input v-model="payload" type="textarea" :autosize="{minRows: 4,maxRows: 6}" placeholder="输入发送指令" />
+      <i-input v-model="payload" type="textarea" :autosize="{minRows: 4,maxRows: 6}" placeholder="输入发送指令，请输入格式为：Strings/ JSON/ XML/ Characters" />
       <p class="margin-top-10">
         <Dropdown trigger="click" placement='bottom-start' @on-click="getQos">
           <i-button type='default'>
@@ -39,7 +39,9 @@ export default {
   data(){
     return{
       pubTopic:'/World',
-      payload:'我宠你嘛 WCMN',
+      payload:
+      `你明白，我宠你嘛
+ N M B , W C M N`,
       Retained:true,
       pubQOS:0
     }

@@ -87,7 +87,7 @@ export default {
     },
     changeUserName () {
       // this.$store.state.user.userName = 'haha' 错误的方法
-      this.SET_USER_NAME('vue-cource')
+      this.SET_USER_NAME('vue-iview-cource')
       // this.$store.dispatch('updateAppName', '123')
     },
     registerModule () {

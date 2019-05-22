@@ -59,7 +59,6 @@ export default {
         this.realData1.push(dataobj) 
       }
       this.realData[0]=this.realData1
-      this.realData=JSON.parse(JSON.stringify(this.realData))
     }
   },
   mounted(){

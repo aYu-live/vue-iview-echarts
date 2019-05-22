@@ -37,8 +37,11 @@ export default {
     gainStateAirMax:function(nval){
       this.xData=createhArr(1,Object.keys(nval).length)
       this.chartData=Object.values(nval).map(item=>item)
-      console.log(this.xData);
     }
+  },
+  mounted(){
+    this.chartData=Object.values(this.showAirMax())
+    this.xData=createhArr(1,Object.keys(this.showAirMax()).length)
   },
   methods:{
     ...mapGetters([

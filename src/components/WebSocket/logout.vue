@@ -42,7 +42,7 @@ export default {
       if(this.outPutLog.length==0){
         this.$Message.warning('日志输出为空！')
       }else{
-        this.outPutLog=[]
+        this.outPutLog=['【日志为空】']
         this.$Message.success('Clear Success！')
       }
     }

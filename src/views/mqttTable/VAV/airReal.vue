@@ -37,8 +37,11 @@ export default {
     gainStateAirReal:function(nval){
       this.xData=createhArr(1,Object.keys(nval).length)
       this.chartData=Object.values(nval).map(item=>item)
-      console.log(this.xData);
     }
+  },
+  mounted(){
+    this.xData=createhArr(1,Object.keys(this.showAirReal()).length)
+    this.chartData=Object.values(this.showAirReal()).map(item=>item)
   },
   methods:{
     ...mapGetters([

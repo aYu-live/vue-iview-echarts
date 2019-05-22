@@ -42,13 +42,19 @@ module.exports = {
   // 打包时不生成.map文件
   productionSourceMap: false,
   devServer: {
-    port: 8083,
     proxy:  {
-      '/API': {
-        target: 'http://192.168.21.233',   //代理接口
+      
+      // '/API': {
+      //   target: 'http://192.168.21.233',   //代理接口
+      //   changeOrigin: true,
+      // },
+      '': {
+        target: 'http://localhost:3004',   //代理接口
         changeOrigin: true,
       }
     }
   }
-
+  // devServer: {
+  //   proxy: 'http://localhost:3004'
+  // }
 }

@@ -40,6 +40,10 @@ export default {
       console.log(this.xData);
     }
   },
+  mounted(){
+    this.xData=createhArr(1,Object.keys(this.showTempReal()).length)
+    this.chartData=Object.values(this.showTempReal()).map(item=>item/10)
+  },
   methods:{
     ...mapGetters([
       'showTempReal',

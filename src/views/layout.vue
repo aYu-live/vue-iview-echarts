@@ -3,7 +3,7 @@
     <Layout class="layout-outer">
       <Sider
         breakpoint='lg'
-        :width="230"
+        :width="292"
         collapsible
         hide-trigger
         reverse-arrow

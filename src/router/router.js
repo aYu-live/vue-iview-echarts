@@ -381,13 +381,40 @@ export const routerMap = [
         component:AHU,
         children:[
           {
-            path: 'airOpen',
-            name: 'airOpen',
+            path: 'sendAirTemp',
+            name: 'sendAirTemp',
             meta: {
-              title: '风阀开度分析',
+              title: '送风温度分析',
               icon:'logo-buffer'
             },
-            component: ()=>import('@/views/mqttTable/VAV/airOpen.vue')
+            component: ()=>import('@/views/mqttTable/AHU/sendAirTemp.vue')
+          },
+          {
+            path: 'air_real_needs',
+            name: 'air_real_needs',
+            meta: {
+              title: '实测风量-需求风量分析',
+              icon:'logo-buffer'
+            },
+            component: ()=>import('@/views/mqttTable/AHU/air_real_needs.vue')
+          },
+          {
+            path: 'airTemp_waterOpen',
+            name: 'airTemp_waterOpen',
+            meta: {
+              title: '回风温度-水阀开度分析',
+              icon:'logo-buffer'
+            },
+            component: ()=>import('@/views/mqttTable/AHU/airTemp_waterOpen.vue')
+          },
+          {
+            path: 'static1_static2_frequency',
+            name: 'static1_static2_frequency',
+            meta: {
+              title: '静压1-静压2-风机频率分析',
+              icon:'logo-buffer'
+            },
+            component: ()=>import('@/views/mqttTable/AHU/static1_static2_frequency.vue')
           }
         ]
       }

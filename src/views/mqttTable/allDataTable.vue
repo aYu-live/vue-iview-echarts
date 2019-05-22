@@ -67,7 +67,7 @@
             ref="VAVtables"
           >
           </Table>
-          <Row class="margin-top-20" v-show="Object.keys(AHUArray).length!==0">
+          <Row class="margin-top-20" v-show="Object.keys(VAVArray).length!==0">
             <Button 
               size="large"
               icon='md-download' 
@@ -135,7 +135,7 @@ export default {
   },
   computed:{
     gainStateBasicData(){
-      return this.$store.state.mqttData.basicData
+      return this.showBasicData()
     }
   },
   watch:{
@@ -154,13 +154,19 @@ export default {
   },
   mounted(){
     this.gainClientConnected()
-    if(this.gainStateBasicData.includes('clientid')){
-      this.allValue=this.gainStateBasicData
-    }
+      this.allValue=this.showAllData()
+      const VAVObject=this.allValue.VAV
+      const AHUObject=this.allValue.AHU
+      const AHUstrArray =filterAHUArrSame(AHUObject) 
+      const VAVstrArray =filterVAVArrSame(VAVObject) 
+      
+      this.$nextTick(()=>{this.VAVArray=returnVAVArray(VAVstrArray,VAVObject)})
+      this.$nextTick(()=>{this.AHUArray=returnAHUArray(AHUstrArray,AHUObject)})
   },
   methods:{
     ...mapGetters([
-      'showBasicData'
+      'showBasicData',
+      'showAllData'
     ]),
     gainClientConnected(){
       if(this.checkConnected){
