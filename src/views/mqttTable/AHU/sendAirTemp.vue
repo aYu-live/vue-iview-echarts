@@ -1,19 +1,40 @@
 <template>
-  <Card class="margin-10">
-    <Tabs>
-        <TabPane label="AHU1" icon="logo-apple">标签一的内容</TabPane>
-        <TabPane label="AHU2" icon="logo-windows">标签二的内容</TabPane>
-    </Tabs>
-  </Card>
+  <check-connected>
+    <Card class="margin-10" slot>
+      <Tabs>
+          <TabPane label="AHU1" icon="logo-apple">
+            
+          </TabPane>
+          <TabPane label="AHU2" icon="logo-windows">
+            
+          </TabPane>
+      </Tabs>
+    </Card>
+  </check-connected>
 </template>
 
 <script>
+import checkConnected from '_c/checkConnected'
 export default {
   name:'sendAirTemp',
+  components:{
+    checkConnected
+  },
   data(){
     return{
-      
     }
+  },
+  computed:{
+    
+  },
+  watch:{
+    
+  },
+  mounted(){
+
+  },
+  methods:{
+    
   }
 }
 </script>

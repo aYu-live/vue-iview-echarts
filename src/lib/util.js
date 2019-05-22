@@ -179,3 +179,28 @@ export const localSave = (name, value) => {
 export const localRead = (name) => {
   return localStorage.getItem(name)
 }
+
+
+export const createObject =(time,values)=>{
+  const value=[]
+  value.push(time)
+  value.push(values)
+  const realObj={
+    'name': time,
+    'value':value
+  }
+  return realObj
+}
+
+export const createSeries=(i,val,nameArr)=>{
+  let seriesObj= {
+    name: '',
+    type: "line",
+    showSymbol: false,
+    hoverAnimation: false,
+    data:[]
+  }
+    seriesObj['name']=nameArr[i]
+    seriesObj['data']=val[i]
+    return seriesObj
+}

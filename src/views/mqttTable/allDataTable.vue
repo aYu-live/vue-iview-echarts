@@ -135,13 +135,12 @@ export default {
   },
   computed:{
     gainStateBasicData(){
-      return this.showBasicData()
+      return this.showAllData()
     }
   },
   watch:{
     gainStateBasicData:function(nval){
-      if(nval.includes('clientid')){
-        this.allValue=JSON.parse(nval)
+        this.allValue=nval
         const VAVObject=this.allValue.VAV
         const AHUObject=this.allValue.AHU
         const AHUstrArray =filterAHUArrSame(AHUObject) 
@@ -149,24 +148,23 @@ export default {
         this.AHUArray=returnAHUArray(AHUstrArray,AHUObject)
         this.VAVArray=returnVAVArray(VAVstrArray,VAVObject)
         console.log(this.AHUArray,this.VAVArray);
-      }
     }
   },
   mounted(){
     this.gainClientConnected()
       this.allValue=this.showAllData()
+      if(this.allValue.length!==0){
       const VAVObject=this.allValue.VAV
       const AHUObject=this.allValue.AHU
       const AHUstrArray =filterAHUArrSame(AHUObject) 
       const VAVstrArray =filterVAVArrSame(VAVObject) 
-      
       this.$nextTick(()=>{this.VAVArray=returnVAVArray(VAVstrArray,VAVObject)})
       this.$nextTick(()=>{this.AHUArray=returnAHUArray(AHUstrArray,AHUObject)})
+      }
   },
   methods:{
     ...mapGetters([
-      'showBasicData',
-      'showAllData'
+      'showAllData',
     ]),
     gainClientConnected(){
       if(this.checkConnected){

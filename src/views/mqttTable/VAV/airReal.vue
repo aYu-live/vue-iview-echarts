@@ -1,13 +1,12 @@
 <template>
-  <div>
     <vavcharts 
       :cardTitle='cardTitle' 
       :chartData='chartData' 
       :xData='xData' 
       :echartTitle='echartTitle'
       :seriesName='seriesName'
-    ></vavcharts>
-  </div>
+    >
+    </vavcharts>
 </template>
 
 <script>

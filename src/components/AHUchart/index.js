@@ -1,2 +1,3 @@
 import ahuChart from './AHUchart.vue'
-export default ahuChart
+import need from './NEED.vue'
+export  {ahuChart,need}
