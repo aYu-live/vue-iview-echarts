@@ -1,7 +1,9 @@
 import echarts from 'echarts/lib/echarts'
 
 export const VAVoption={
-
+  title:{
+    text:'VAV运行分析'
+  },
   tooltip: {
     trigger: 'axis',
     axisPointer: {
@@ -30,7 +32,8 @@ export const VAVoption={
     textStyle: {
       color: '#032B49',
       fontSize:20
-    }
+    },
+    top:'10%'
   },
   xAxis: {
     data: [],
@@ -42,7 +45,7 @@ export const VAVoption={
     }
   },
   grid: {
-    top: '10%',
+    top: '20%',
     left: '1%',
     right: '10%',
     containLabel: true

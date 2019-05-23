@@ -192,10 +192,10 @@ export const createObject =(time,values)=>{
   return realObj
 }
 
-export const createSeries=(i,val,nameArr)=>{
+export const createSeries=(i,val,nameArr,line_bar_type)=>{
   let seriesObj= {
     name: '',
-    type: "line",
+    type: line_bar_type,
     showSymbol: false,
     hoverAnimation: false,
     data:[]

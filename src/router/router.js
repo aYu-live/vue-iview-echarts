@@ -180,7 +180,7 @@ export const routerMap = [
         component: () => import('@/views/folder-tree/folder-tree.vue')
       },
       {
-        path: 'params/:id',
+        path: 'params/:params',
         name: 'params',
         meta: {
           title: '参数',

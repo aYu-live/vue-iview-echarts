@@ -6,7 +6,7 @@
             <first-send :seriesName='seriesName1' :titleText='titleText1'></first-send>
           </TabPane>
           <TabPane label="AHU2_送风温度分析" icon="logo-windows">
-            <second-send :seriesName='seriesName1' :titleText='titleText1'></second-send>
+            <second-send :seriesName='seriesName2' :titleText='titleText2'></second-send>
           </TabPane>
       </Tabs>
     </Card>

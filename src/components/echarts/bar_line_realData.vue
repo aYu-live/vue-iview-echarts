@@ -1,6 +1,4 @@
 <template>
-  <main>
-    <section>
       <figure>
         <chart
           :options="option"
@@ -10,8 +8,6 @@
           autoresize
         />
         </figure>
-    </section>
-  </main>
 </template>
 
 <script>

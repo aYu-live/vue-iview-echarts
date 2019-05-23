@@ -6,7 +6,7 @@
             <first-stc :seriesName='seriesName1' :titleText='titleText1'></first-stc>
           </TabPane>
           <TabPane label="AHU2_静压1-静压2-风机频率分析" icon="logo-windows">
-            <second-stc :seriesName='seriesName1' :titleText='titleText1'></second-stc>
+            <second-stc :seriesName='seriesName1' :titleText='titleText2'></second-stc>
           </TabPane>
       </Tabs>
     </Card>

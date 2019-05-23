@@ -61,7 +61,12 @@ export default {
       const AHU=allData.AHU
       const xTime=new Date(allData.time)
       const real=AHU[this.aone]/10
-      this.realsData.push(createObject(xTime,real))
+      if(this.realsData.length<100){
+        this.realsData.push(createObject(xTime,real))
+      }else{
+        this.realsData.shift()
+        this.realsData.push(createObject(xTime,real))
+      }
       this.datas[0]=this.realsData
       this.datas=clonedeep(this.datas)
     }

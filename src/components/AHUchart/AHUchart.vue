@@ -114,18 +114,21 @@ export default {
   watch: {
     datas: function(nval) {
       for (let i = 0; i < nval.length; i++) {
-        this.seriesArr[i] = createSeries(i, nval, this.seriesName);
+        this.seriesArr[i] = createSeries(i, nval, this.seriesName,this.line_bar_type);
       }
       this.option.series = clonedeep(this.seriesArr);
       console.log("watchOption", this.option);
     }
   },
-  mounted() {
+  beforeMount() {
     this.$nextTick(() => {
       if (this.datas.length !== 0) {
         for (let i = 0; i < this.datas.length; i++) {
           this.seriesArr[i] = createSeries(i, this.datas, this.seriesName);
         }
+        const title={text:''}
+        title.text=this.titleText
+        this.option.title=clonedeep(title)
         this.option.series = clonedeep(this.seriesArr)
         console.log(this.option);
       }

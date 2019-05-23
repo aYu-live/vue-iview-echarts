@@ -62,8 +62,15 @@ export default {
       const xTime=new Date(allData.time)
       const real=AHU[this.rt]/10
       const need=AHU[this.pv]/10
-      this.data1.push(createObject(xTime,real))
-      this.data2.push(createObject(xTime,need))
+      if(this.data1.length<100&&this.data2.length<100){
+        this.data1.push(createObject(xTime,real))
+        this.data2.push(createObject(xTime,need))
+      }else{
+        this.data1.shift()
+        this.data2.shift()
+        this.data1.push(createObject(xTime,real))
+        this.data2.push(createObject(xTime,need))
+      }
       this.datas[0]=this.data1      
       this.datas[1]=this.data2
       this.datas=clonedeep(this.datas)

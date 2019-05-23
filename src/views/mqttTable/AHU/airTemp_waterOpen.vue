@@ -6,7 +6,7 @@
             <first-water :seriesName='seriesName1' :titleText='titleText1'></first-water>
           </TabPane>
           <TabPane label="AHU2_回风温度-水阀开度分析" icon="logo-windows">
-            <second-water :seriesName='seriesName1' :titleText='titleText1'></second-water>
+            <second-water :seriesName='seriesName2' :titleText='titleText2'></second-water>
           </TabPane>
       </Tabs>
     </Card>

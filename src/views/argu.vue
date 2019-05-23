@@ -1,24 +1,24 @@
 <template>
   <div>
-    {{ id }}
+    {{ params }}
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    id: {
+    params: {
       type: String,
       default: 'lison'
     }
   },
   beforeRouteEnter (to, from, next) {
     next(vm => {
-      // console.log(vm)
+      console.log(vm)
     })
   },
   beforeRouteUpdate (to, from, next) {
-    console.log(to.name, from.name)
+    console.log(to.name, from)
     next()
   }
 }

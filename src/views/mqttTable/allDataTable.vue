@@ -21,37 +21,37 @@
           >
           </Table>
           <Row class="margin-top-20" v-show="Object.keys(AHUArray).length!==0">
-            <Button 
+            <i-button 
               size="large"
               icon='md-download' 
               :loading='exportLoading'
               @click="exportAHUExcel"
             >导出EXCEL文件
-            </Button>
-            <Button 
+            </i-button>
+            <i-button 
               class="margin-left-10"
               size="large"
               @click="exportAHUData(1)"
             >
             <Icon type="ios-download-outline"></Icon>
             导出CSV原始数据
-            </Button>
-        <Button 
+            </i-button>
+        <i-button 
           class="margin-left-10" 
           size="large" 
           @click="exportAHUData(2)"
         >
         <Icon type="ios-download-outline"></Icon>
         导出CSV排序后的数据
-        </Button>
-        <Button 
+        </i-button>
+        <i-button 
           class="margin-left-10" 
           size="large"
           icon="ios-close"
           :loading='exportLoading'
           @click="deletAHUData"
         >清空数据
-        </Button>
+        </i-button>
       </Row>
         </Card>
         <Card class="table2-card-wrapper" title="VAV数据显示">
@@ -68,37 +68,37 @@
           >
           </Table>
           <Row class="margin-top-20" v-show="Object.keys(VAVArray).length!==0">
-            <Button 
+            <i-button 
               size="large"
               icon='md-download' 
               :loading='exportLoading'
               @click="exportVAVExcel"
             >导出EXCEL文件
-            </Button>
-            <Button 
+            </i-button>
+            <i-button 
               class="margin-left-10"
               size="large"
               @click="exportVAVData(1)"
             >
             <Icon type="ios-download-outline"></Icon>
             导出CSV原始数据
-            </Button>
-            <Button 
+            </i-button>
+            <i-button 
               class="margin-left-10" 
               size="large" 
               @click="exportVAVData(2)"
             >
             <Icon type="ios-download-outline"></Icon>
             导出CSV排序后的数据
-            </Button>
-            <Button 
+            </i-button>
+            <i-button 
               class="margin-left-10" 
               size="large"
               icon="ios-close"
               :loading='exportLoading'
               @click="deletVAVData"
             >清空数据
-            </Button>
+            </i-button>
           </Row>
         </Card>
         
@@ -124,7 +124,7 @@ export default {
       connected:null,
       checkConnected:this.$store.state.mqttData.client.connected&&(this.$store.state.mqttData.client.connected===true),
       topicConnected:null,
-      checkTopicConnected:sessionStorage.getItem('topicArr'),
+      checkTopicConnected:sessionStorage  .getItem('topicArr'),
       errorData:'正在等待WebSocket传输数据，请等待...',
       VAVArray:[],
       AHUArray:[],
@@ -147,7 +147,7 @@ export default {
         const VAVstrArray =filterVAVArrSame(VAVObject) 
         this.AHUArray=returnAHUArray(AHUstrArray,AHUObject)
         this.VAVArray=returnVAVArray(VAVstrArray,VAVObject)
-        console.log(this.AHUArray,this.VAVArray);
+        console.log('tableWatch');
     }
   },
   mounted(){
@@ -264,6 +264,9 @@ export default {
 
 <style lang="less">
 @import url('./dataTable.less');
+.ivu-btn-large{
+  margin:4px;
+}
 .dataTable-wrapper{
   h1{text-align: center;color: #ED4014}
   .table1-card-wrapper{

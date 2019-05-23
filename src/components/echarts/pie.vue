@@ -238,7 +238,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 button{
   border: 1px solid #4fc08d;
   border-radius:2em;
@@ -285,7 +285,7 @@ figure{
 
   .echarts{
     width: 100%;
-    min-height: 500px;
+    min-height: 400px;
     height: 300px;
   }
 }

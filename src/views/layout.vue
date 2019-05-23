@@ -10,7 +10,10 @@
         v-model="collapsed"
         class="sider-outer"
       >
-        <side-menu :collapsed="collapsed" :list="routers"></side-menu>
+        <side-menu :collapsed="collapsed" :list="routers">
+          <div class="logo-font logo-coll-font" v-show="collapsed">VAV</div>
+          <div class="logo-font" v-show="!collapsed" >天盈广场VAV控制系统</div>
+        </side-menu>
       </Sider>
       <Layout>
         <Headers>
@@ -145,5 +148,19 @@ export default {
   .page-card {
     min-height: ~"calc(100vh - 84px)";
   }
+}
+.logo-font{
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 24px;
+  line-height: 20px;
+  color:white;
+  padding: 22px 20px;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+  border-bottom: 0.5px solid #5D667C 
+}
+.logo-coll-font{
+  padding-left: 10px;
 }
 </style>

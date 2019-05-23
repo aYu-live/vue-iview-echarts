@@ -6,7 +6,7 @@
             <first-needs :seriesName='seriesName1' :titleText='titleText1'></first-needs>
           </TabPane>
           <TabPane label="AHU2_实测风量-需求风量分析" icon="logo-windows">
-            <second-needs :seriesName='seriesName1' :titleText='titleText1'></second-needs>
+            <second-needs :seriesName='seriesName2' :titleText='titleText2'></second-needs>
           </TabPane>
       </Tabs>
     </Card>

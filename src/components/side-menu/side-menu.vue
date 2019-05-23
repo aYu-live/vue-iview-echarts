@@ -108,7 +108,10 @@ export default {
 <style lang="less">
 .side-menu-wrapper {
   width: 100%;
-  
+  ul>li{
+    white-space: nowrap;
+  overflow: hidden;
+  }
     .ivu-icon{
       vertical-align: top;
     }
