@@ -49,7 +49,7 @@ module.exports = {
       //   changeOrigin: true,
       // },
       '': {
-        target: 'http://localhost:3004',   //代理接口
+        target: 'http://localhost:4004',   //代理接口
         changeOrigin: true,
       }
     }

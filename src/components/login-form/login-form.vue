@@ -1,18 +1,18 @@
 <template>
   <Form ref="loginForm" :model="form" :rules="rules" @keydown.enter.native="handleSubmit">
     <FormItem prop="userName">
-      <Input v-model="form.userName" placeholder="请输入用户名">
+      <i-input v-model="form.userName" placeholder="请输入用户名">
         <span slot="prepend">
           <Icon :size="16" type="ios-person"></Icon>
         </span>
-      </Input>
+      </i-input>
     </FormItem>
     <FormItem prop="password">
-      <Input type="password" v-model="form.password" placeholder="请输入密码">
+      <i-input type="password" v-model="form.password" placeholder="请输入密码">
         <span slot="prepend">
           <Icon :size="14" type="md-lock"></Icon>
         </span>
-      </Input>
+      </i-input>
     </FormItem>
     <FormItem>
       <Button @click="handleSubmit" type="primary" long>登录</Button>
@@ -43,7 +43,7 @@ export default {
   data () {
     return {
       form: {
-        userName: 'super_admin',
+        userName: '小余同学',
         password: ''
       }
     }

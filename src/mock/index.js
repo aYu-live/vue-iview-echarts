@@ -5,8 +5,8 @@ import {getHomeData,getRealData} from './response/homedata'
 const Random = Mock.Random
 
 Mock.mock(/\/getUserInfo/, 'post', getUserInfo)
-Mock.mock(/\/index\/login/, 'post', login)
-Mock.mock(/\/authorization/, 'get', authorization)
+// Mock.mock(/\/index\/login/, 'post', login)
+// Mock.mock(/\/authorization/, 'get', authorization)
 Mock.mock(/\/getTableData/, 'get', getTableData)
 Mock.mock(/\/getFileList/, 'get', getFileList)
 Mock.mock(/\/getFolderList/, 'get', getFolderList)

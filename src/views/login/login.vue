@@ -4,7 +4,6 @@
       <Card icon="log-in" title="欢迎登录" :bordered="false">
         <div class="form-con">
           <login-form @on-success-valid="handleSubmit"></login-form>
-          <button @click="a1">11111</button>
           <p class="login-tip">输入任意用户名和密码即可</p>
         </div>
       </Card>
@@ -31,9 +30,6 @@ export default {
             name: 'home'
           })
       })
-    },
-    a1(){
-      console.log(this.handleLogin);
     }
   }
 }
