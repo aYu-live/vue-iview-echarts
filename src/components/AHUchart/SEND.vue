@@ -61,7 +61,7 @@ export default {
       const AHU=allData.AHU
       const xTime=new Date(allData.time)
       const real=AHU[this.aone]/10
-      if(this.realsData.length<100){
+      if(this.realsData.length<600){
         this.realsData.push(createObject(xTime,real))
       }else{
         this.realsData.shift()

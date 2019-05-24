@@ -66,7 +66,7 @@ export default {
       const xTime=new Date(allData.time)
       const real=AHU[this.bf]/10
       const need=AHU[this.nf]/10
-      if(this.realsData.length<100&&this.needsData.length<100){
+      if(this.realsData.length<600 &&this.needsData.length<600){
         this.realsData.push(createObject(xTime,real))
         this.needsData.push(createObject(xTime,need))
       }else{

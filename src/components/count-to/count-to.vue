@@ -29,7 +29,7 @@ export default {
      */
     startVal: {
       type: Number,
-      default: 400
+      default: 0
     },
     /**
      * @description 最终值

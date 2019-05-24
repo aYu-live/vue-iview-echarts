@@ -36,6 +36,7 @@
             </Card>
           </div>
         </Content>
+        <Footer class="layout-footer-center">2018-2019 &copy; Yu <span class="right">Version：2.8</span></Footer>
       </Layout>
     </Layout>
   </div>
@@ -162,5 +163,12 @@ export default {
 }
 .logo-coll-font{
   padding-left: 10px;
+}
+.layout-footer-center{
+  text-align: center;
+  background-color: #CCCED0;
+}
+.right{
+  float: right;
 }
 </style>

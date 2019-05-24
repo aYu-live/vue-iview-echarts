@@ -68,7 +68,7 @@ export default {
       const data1=AHU[this.pone]/10
       const data2=AHU[this.ptwo]/10
       const data3=AHU[this.hz]
-      if(this.data1.length<100&&this.data2.length<100&&this.data3.length<100){
+      if(this.data1.length<600&&this.data2.length<600&&this.data3.length<600){
         this.data1.push(createObject(xTime,data1))
         this.data2.push(createObject(xTime,data2))
         this.data3.push(createObject(xTime,data3))

@@ -2,10 +2,10 @@
   <check-connected>
     <Card class="margin-10" slot>
       <Tabs>
-          <TabPane label="AHU1_回风温度-水阀开度分析" icon="logo-apple">
+          <TabPane label="AHU1_回风温度-水阀开度分析" icon="ios-home">
             <first-water :seriesName='seriesName1' :titleText='titleText1'></first-water>
           </TabPane>
-          <TabPane label="AHU2_回风温度-水阀开度分析" icon="logo-windows">
+          <TabPane label="AHU2_回风温度-水阀开度分析" icon="ios-home-outline">
             <second-water :seriesName='seriesName2' :titleText='titleText2'></second-water>
           </TabPane>
       </Tabs>

@@ -2,10 +2,10 @@
   <check-connected>
     <Card class="margin-10" slot>
       <Tabs>
-          <TabPane label="AHU1_实测风量-需求风量分析" icon="logo-apple">
+          <TabPane label="AHU1_实测风量-需求风量分析" icon="ios-home">
             <first-needs :seriesName='seriesName1' :titleText='titleText1'></first-needs>
           </TabPane>
-          <TabPane label="AHU2_实测风量-需求风量分析" icon="logo-windows">
+          <TabPane label="AHU2_实测风量-需求风量分析" icon="ios-home-outline">
             <second-needs :seriesName='seriesName2' :titleText='titleText2'></second-needs>
           </TabPane>
       </Tabs>

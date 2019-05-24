@@ -110,12 +110,16 @@
 </template>
 
 <script>
+import CountTo from "@/components/count-to"
 import excel from '@/lib/excel'
 import {mapGetters} from 'vuex'
 import {returnAHUArray, returnVAVArray, filterVAVArrSame, filterAHUArrSame} from '@/lib/tools'
 import {AHUcolums, VAVcolums} from './columns'
 export default {
   name:'allDataTable',
+  components: {
+    CountTo
+  },
   data(){
     return{
       exportLoading:false,
@@ -305,5 +309,13 @@ export default {
 }
 .margin-top-20{
   margin-top:20px;
+}
+.count-number{
+  color: #262626;
+}
+table{
+  .count-to-number{
+    color: #515a6e;
+  }
 }
 </style>

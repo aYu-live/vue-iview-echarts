@@ -2,10 +2,10 @@
   <check-connected>
     <Card class="margin-10" slot>
       <Tabs>
-          <TabPane label="AHU1_静压1-静压2-风机频率分析" icon="logo-apple">
+          <TabPane label="AHU1_静压1-静压2-风机频率分析" icon="ios-home">
             <first-stc :seriesName='seriesName1' :titleText='titleText1'></first-stc>
           </TabPane>
-          <TabPane label="AHU2_静压1-静压2-风机频率分析" icon="logo-windows">
+          <TabPane label="AHU2_静压1-静压2-风机频率分析" icon="ios-home-outline">
             <second-stc :seriesName='seriesName1' :titleText='titleText2'></second-stc>
           </TabPane>
       </Tabs>

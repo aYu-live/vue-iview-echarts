@@ -273,7 +273,7 @@ export const routerMap = [
         name: 'bigdata',
         meta: {
           title: '大数据表格性能优化',
-          icon:'logo-buffer'
+          icon:'ios-paper'
         },
         component: bigdata
       }
@@ -302,7 +302,7 @@ export const routerMap = [
         name: 'allDataTable',
         meta: {
           title: '设备信息表格',
-          icon:'logo-buffer'
+          icon:'ios-barcode-outline'
         },
         component: ()=>import('@/views/mqttTable/allDataTable.vue')
       },
@@ -311,7 +311,7 @@ export const routerMap = [
         name: 'VAV',
         meta: {
           title: 'VAV设备分析',
-          icon:'logo-buffer'
+          icon:'md-apps'
         },
         component:VAV,
         children:[
@@ -320,7 +320,7 @@ export const routerMap = [
             name: 'analysisVAV',
             meta: {
               title: 'VAV运行分析图',
-              icon:'logo-buffer'
+              icon:'ios-stats-outline'
             },
             component: ()=>import('@/views/mqttTable/VAV/analysisVAV.vue')
           },
@@ -329,7 +329,7 @@ export const routerMap = [
             name: 'tempReal',
             meta: {
               title: '实测温度分析',
-              icon:'logo-buffer'
+              icon:'md-stats'
             },
             component: ()=>import('@/views/mqttTable/VAV/tempReal.vue')
           },
@@ -338,7 +338,7 @@ export const routerMap = [
             name: 'airMin',
             meta: {
               title: '最小风量分析',
-              icon:'logo-buffer'
+              icon:'md-stats'
             },
             component: ()=>import('@/views/mqttTable/VAV/airMin.vue')
           },
@@ -347,7 +347,7 @@ export const routerMap = [
             name: 'airMax',
             meta: {
               title: '最大风量分析',
-              icon:'logo-buffer'
+              icon:'md-stats'
             },
             component: ()=>import('@/views/mqttTable/VAV/airMax.vue')
           },
@@ -356,7 +356,7 @@ export const routerMap = [
             name: 'airReal',
             meta: {
               title: '实测风量分析',
-              icon:'logo-buffer'
+              icon:'md-stats'
             },
             component: ()=>import('@/views/mqttTable/VAV/airReal.vue')
           },
@@ -365,7 +365,7 @@ export const routerMap = [
             name: 'airOpen',
             meta: {
               title: '风阀开度分析',
-              icon:'logo-buffer'
+              icon:'md-stats'
             },
             component: ()=>import('@/views/mqttTable/VAV/airOpen.vue')
           }
@@ -376,7 +376,7 @@ export const routerMap = [
         name: 'AHU',
         meta: {
           title: 'AHU设备分析',
-          icon:'logo-buffer'
+          icon:'ios-grid-outline'
         },
         component:AHU,
         children:[
@@ -385,7 +385,7 @@ export const routerMap = [
             name: 'sendAirTemp',
             meta: {
               title: '送风温度分析',
-              icon:'logo-buffer'
+              icon:'md-pulse'
             },
             component: ()=>import('@/views/mqttTable/AHU/sendAirTemp.vue')
           },
@@ -394,7 +394,7 @@ export const routerMap = [
             name: 'air_real_needs',
             meta: {
               title: '实测风量-需求风量分析',
-              icon:'logo-buffer'
+              icon:'md-pulse'
             },
             component: ()=>import('@/views/mqttTable/AHU/air_real_needs.vue')
           },
@@ -403,7 +403,7 @@ export const routerMap = [
             name: 'airTemp_waterOpen',
             meta: {
               title: '回风温度-水阀开度分析',
-              icon:'logo-buffer'
+              icon:'md-pulse'
             },
             component: ()=>import('@/views/mqttTable/AHU/airTemp_waterOpen.vue')
           },
@@ -412,7 +412,7 @@ export const routerMap = [
             name: 'static1_static2_frequency',
             meta: {
               title: '静压1-静压2-风机频率分析',
-              icon:'logo-buffer'
+              icon:'md-pulse'
             },
             component: ()=>import('@/views/mqttTable/AHU/static1_static2_frequency.vue')
           }
