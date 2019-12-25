@@ -29,7 +29,14 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 jenkins和nginx docker 配置教程：
+<<<<<<< HEAD
   http://note.youdao.com/noteshare?id=755ceb8a2c34b517688de474a87f3e70
   
 
+<<<<<<< Updated upstream
 
+=======
+=======
+  http://note.youdao.com/noteshare?id=755ceb8a2c34b517688de474a87f3e70
+>>>>>>> parent of b2ea169... test1
+>>>>>>> Stashed changes
